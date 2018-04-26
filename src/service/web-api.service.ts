@@ -3,10 +3,14 @@ import { Patient } from '../model/patient';
 import { LISTPATIENT } from '../mock/mockListPatient';
 import { Symptom } from '../model/symptom';
 
+import { Http, Headers, RequestOptions } from "@angular/http";
+
 @Injectable()
 export class WebApiService {
 
-  constructor() { }
+  private url: string = 'http://';
+
+  constructor(private http: Http) { }
 
   public connexion(id : string, pw : string): boolean{
     return true;
@@ -16,8 +20,23 @@ export class WebApiService {
     return LISTPATIENT;
   }
 
-  public addPatient(p : Patient) : boolean{
-    return true;
+  public addPatient(p : Patient) : Promise<void>{
+    //envoie des données au webService
+    let headers = new Headers(
+      {
+        'Content-Type' : 'application/json'
+      });
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise((resolve, reject) => {
+      this.http.post(this.url,JSON.stringify(p), options)
+        .subscribe(res => {
+            alert("Données envoyées");
+            return resolve(null);
+       }, (err) => {
+        reject(err);
+      });
+  });
   }
   public changePatient(p : Patient) : boolean{
     return true;

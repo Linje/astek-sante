@@ -14,8 +14,12 @@ export class ProfessionnelSanteService{
     this.listPatient = this.webApiService.getListPatient(id,pw);
   }
 
-  public addPatient(p: Patient) : boolean{
-    return true;
+  public addPatient(p: Patient) : Promise<void>{
+    return new Promise<void>(resolve => {
+      this.webApiService.addPatient(p).then(() => {
+          this.listPatient.push(p);
+      }).catch(e => alert(e));
+  });
   }
 
 }

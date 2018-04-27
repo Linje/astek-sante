@@ -8,7 +8,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 @Injectable()
 export class WebApiService {
 
-  private url: string = 'http://';
+  private url: string = 'http://localhost:8080/api/webapi/patient';
 
   constructor(private http: Http) { }
 
@@ -16,7 +16,7 @@ export class WebApiService {
     return true;
   }
 
-  public getListPatient(id : string, pw : string): Patient[]{
+  public getListPatient(id : string): Patient[]{
     return LISTPATIENT;
   }
 
@@ -34,6 +34,7 @@ export class WebApiService {
             alert("Données envoyées");
             return resolve(null);
        }, (err) => {
+         alert(err);
         reject(err);
       });
   });

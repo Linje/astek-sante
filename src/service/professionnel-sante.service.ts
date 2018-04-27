@@ -7,11 +7,12 @@ export class ProfessionnelSanteService{
   
   private listPatient : Patient[];
   private currentPatient : Patient;
+  private p : Patient;
 
-  constructor(private webApiService: WebApiService) { }
+  constructor(private webApiService: WebApiService) {}
 
   public setListPatient(id : string, pw : string){
-    this.listPatient = this.webApiService.getListPatient(id,pw);
+    this.listPatient = this.webApiService.getListPatient(id);
   }
 
   public addPatient(p: Patient) : Promise<void>{

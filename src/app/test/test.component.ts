@@ -15,11 +15,18 @@ export class TestComponent implements OnInit {
   }
 
   onClickMe() {
-    let p:Patient;
+    //test de post
+    /*let p:Patient;
     p = new Patient(3, "billy", "joe", "12/01/1996", true,[])
     this.webApiService.addPatient(p).then(()=>{
       alert("good")
     });
+    */
+
+    //test de get
+    this.webApiService.getListPatient("jsallou").then((list)=>{
+      alert(list);
+    })
     
   }
 

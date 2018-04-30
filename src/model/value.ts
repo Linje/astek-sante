@@ -1,4 +1,4 @@
-export class Valeur {
+export class Value {
     private intensite : number;
     private date : Date;
 

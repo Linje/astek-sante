@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Patient } from '../model/patient';
 import { LISTPATIENT } from '../mock/mockListPatient';
-import { Symptom } from '../model/symptom';
+import { Symptome } from '../model/symptome';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
 
@@ -62,10 +62,10 @@ export class WebApiService {
     return true;
   }
 
-  public addSymptom(p : Patient, s : Symptom) : boolean{
+  public addSymptom(p : Patient, s : Symptome) : boolean{
     return true;
   }
-  public changeSymptom(p : Patient, s : Symptom) : boolean{
+  public changeSymptom(p : Patient, s : Symptome) : boolean{
     return true;
   }
   public deleteSymptom(p : Patient, numberS : string) : boolean{

@@ -1,13 +1,13 @@
-import { Value } from './value';
+import { Valeur } from './valeur';
 
-export class Symptom {
+export class Symptome {
     private numberS : string;
     private nom : string;
     private description : string;
     private echelle : number[];
-    private listValeur : Value[];
+    private listValeur : Valeur[];
 
-    constructor(numberSymptom : number, nom : string, description : string, echelle : number[], listValeur : Value[]){
+    constructor(numberSymptom : number, nom : string, description : string, echelle : number[], listValeur : Valeur[]){
         this.numberS = "s" + numberSymptom + 1;
         this.nom = nom;
         this.description = description;
@@ -27,7 +27,7 @@ export class Symptom {
     public getEchelle() : number[]{
         return this.echelle;
     }
-    public getListValeur() : Value[]{
+    public getListValeur() : Valeur[]{
         return this.listValeur;
     }
 
@@ -41,7 +41,7 @@ export class Symptom {
     public setEchelle(echelle: number[]){
         this.echelle = echelle;
     }
-    public setListValeur(listValeur: Value[]){
+    public setListValeur(listValeur: Valeur[]){
         this.listValeur = listValeur;
     }
 }

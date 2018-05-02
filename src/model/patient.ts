@@ -1,4 +1,4 @@
-import { Symptom } from './symptom';
+import { Symptome } from './symptome';
 
 export class Patient {
 
@@ -7,15 +7,15 @@ export class Patient {
     private prenom : string;
     private dateDeNaissance : string;
     private alarmActivation : boolean;
-    private listSymptom : Symptom[];
+    private listSymptome : Symptome[];
 
-    constructor(numberPatient : number, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptom : Symptom[]){
+    constructor(numberPatient : number, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptome : Symptome[]){
         this.numberP = "p" + numberPatient + 1; //numberPatient = nombre de patient total
         this.nom = nom;
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
         this.alarmActivation = alarmActivation;
-        this.listSymptom = listSymptom;
+        this.listSymptome = listSymptome;
     }
     // get
     public getNumberP() : string{
@@ -33,8 +33,8 @@ export class Patient {
     public getAlarmActivation() : boolean{
         return this.alarmActivation;
     }
-    public getListSymptom() : Symptom[]{
-        return this.listSymptom;
+    public getListSymptome() : Symptome[]{
+        return this.listSymptome;
     }
 
     // set (sauf de numberP)
@@ -50,8 +50,8 @@ export class Patient {
     public setAlarmActivation(alarmActivation: boolean){
         this.alarmActivation = alarmActivation;
     }
-    public setListSymptom(listSymptom: Symptom[]){
-        this.listSymptom = listSymptom;
+    public setListSymptome(listSymptom: Symptome[]){
+        this.listSymptome = listSymptom;
     }
 
 }

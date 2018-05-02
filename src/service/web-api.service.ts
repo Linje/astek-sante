@@ -8,7 +8,7 @@ import { Http, Headers, RequestOptions } from "@angular/http";
 @Injectable()
 export class WebApiService {
 
-  private url: string = 'http://192.168.1.83:8080/api/webapi/patient';
+  private url: string = 'http://localhost:8080/api/webapi/professional';
 
   constructor(private http: Http) { }
 
@@ -18,8 +18,7 @@ export class WebApiService {
 
   public getListPatient(id : string): Promise<Patient[]>{
     return new Promise((resolve, reject) => {
-      alert(1);
-      this.http.get(this.url)
+      this.http.get(this.url+"/"+ id)
       .subscribe(data => {
           let list: Patient[] = [];
           let res = data.json();

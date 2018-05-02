@@ -5,9 +5,9 @@ import { WebApiService } from './web-api.service';
 @Injectable()
 export class ProfessionnelSanteService{
   
+  private currentId : string;
   private listPatient : Patient[];
   private currentPatient : Patient;
-  private p : Patient;
 
   constructor(private webApiService: WebApiService) {}
 

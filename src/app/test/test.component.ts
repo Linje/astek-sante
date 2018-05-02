@@ -15,6 +15,12 @@ export class TestComponent implements OnInit {
   }
 
   onClickMe() {
+
+    //test de get
+    this.webApiService.getListPatient("pf1_id").then((list)=>{
+      alert(list);
+    })
+
     //test de post
     /*let p:Patient;
     p = new Patient(3, "billy", "joe", "12/01/1996", true,[])
@@ -22,11 +28,6 @@ export class TestComponent implements OnInit {
       alert("good")
     });
     */
-
-    //test de get
-    this.webApiService.getListPatient("jsallou").then((list)=>{
-      alert(list);
-    })
     
   }
 

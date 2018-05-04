@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
 import { Patient } from '../../model/patient';
 import { PageService } from '../../service/page.service';
+import { Symptome } from '../../model/symptome';
+import { Valeur } from '../../model/valeur';
 
 
 @Component({
@@ -25,8 +27,12 @@ export class TestComponent implements OnInit {
     */
 
     //test de post
+    let v : Valeur;
+    v = new Valeur(3,new Date());
+    let s: Symptome;
+    s = new Symptome(3,"symptomeDeTest","descriptionDeTest",[0,10],[v]);
     let p:Patient;
-    p = new Patient(3, "testNom", "testPrenom", "12/01/1996", true,[])
+    p = new Patient(3, "testNom", "testPrenom", "12/01/1996", true,[s])
     this.professionnelSanteService.addPatient(p).then(()=>{
       alert("good")
     });

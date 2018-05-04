@@ -8,7 +8,7 @@ export class Symptome {
     private listValeur : Valeur[];
 
     constructor(numberSymptom : number, nom : string, description : string, echelle : number[], listValeur : Valeur[]){
-        this.numberS = "s" + numberSymptom + 1;
+        this.numberS = "" + numberSymptom;
         this.nom = nom;
         this.description = description;
         this.echelle = echelle;

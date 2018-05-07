@@ -16,8 +16,19 @@ export class ProfessionnelSanteService {
 
   constructor(private http: Http) {}
 
-  public connexion(id : string, pw : string): boolean{
-    return true;
+  public connexion(id : string, psw : string): Promise<boolean>{
+    return new Promise((resolve, reject) => {
+      this.http.get(this.url+"/connection/"+ id + "/" + psw)
+      .subscribe(data => {
+          let b : boolean;
+          if(data.text() === 'true') b=true;
+          else b=false;;
+          return resolve(b);
+         }, (err) => {
+           alert(err);
+             reject(err);
+         });
+      });
   }
 
   public getListPatient(id : string): Promise<Patient[]>{
@@ -40,11 +51,11 @@ export class ProfessionnelSanteService {
          });
       });
     
-    //return LISTPATIENT;
+    //return LISTPATIENT --> pour le Test;
   }
 
   public addPatient(p : Patient) : Promise<void>{
-    this.currentId = "pf1_id"; // JUSTE POUR LE TEST
+    this.currentId = "pf2_id"; // JUSTE POUR LE TEST
 
     //envoie des données au webService
     let headers = new Headers(

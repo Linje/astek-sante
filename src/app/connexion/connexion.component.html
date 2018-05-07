@@ -1,3 +1,30 @@
-<p>
-  connexion works!
-</p>
+<div class="container">
+
+    <h1 class="display-3">
+        App Name
+        <small class="text-muted">Connexion</small>
+    </h1>
+
+    <br/><br/><br/>
+
+    <div class="jumbotron">
+
+      <div class="form-group">
+          <label class="col-form-label" for="inputDefault">IDENTIFIANT</label>
+          <input class="form-control" placeholder="tapez votre identifiant ici" id="identifiant" type="text" #identifiant>
+      </div>
+
+      <br/><br/>
+
+      <div class="form-group">
+          <label for="exampleInputPassword1">MOT DE PASSE</label>
+          <input class="form-control" id="password" placeholder="tapez votre mot de passe ici" type="password" #password>
+      </div>
+
+      <br/><br/><br/>
+
+      <button type="button" class="btn btn-success" (click)="connexion(identifiant.value, password.value)">Connexion</button>
+    </div>
+  
+
+</div>

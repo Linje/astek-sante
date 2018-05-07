@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
+import { PageService } from '../../service/page.service';
 
 @Component({
   selector: 'app-connexion',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnexionComponent implements OnInit {
 
-  constructor() { }
+  private identifiant : string;
+  private password : string;
 
-  ngOnInit() {
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private pageService:PageService) { }
+
+  ngOnInit() {}
+
+  connexion(id : string, psw : string){    
+    this.professionnelSanteService.connexion(id,psw)
+    .then(res => {
+      if(res){
+        this.pageService.setPage(1); 
+        alert("connecté")
+      }
+      else{
+        alert("identifiant ou mot de passe incorrect");
+      }
+    });
   }
 
 }

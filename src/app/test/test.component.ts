@@ -18,14 +18,15 @@ export class TestComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClickMe() {
+
+  getTest() {
     //test de get
-    /*
     this.professionnelSanteService.getListPatient("pf1_id").then((list)=>{
       alert(list);
-    })
-    */
+    });
+  }
 
+  postTest() {
     //test de post
     let v : Valeur;
     v = new Valeur(3,new Date());
@@ -36,11 +37,18 @@ export class TestComponent implements OnInit {
     this.professionnelSanteService.addPatient(p).then(()=>{
       alert("good")
     });
-    
+  }
 
+  connexionTest(){
+    this.professionnelSanteService.connexion("pf1_id","pf1_psw")
+    .then(res => {
+      alert(res);
+      });
+  }
 
+  pageTest(){
     //test de page
-    //this.pageService.setPage(1);
+    this.pageService.setPage(0);
   }
 
 }

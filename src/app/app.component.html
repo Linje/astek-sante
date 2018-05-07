@@ -1,16 +1,10 @@
 
 <div [ngSwitch]="pageService.getPage()">
       <li *ngSwitchCase="0">
-          <div style="text-align:center">
-              <h1>
-                {{ title }}
-              </h1>
-            </div>
-            <h2> page app.component </h2>
-            <app-test></app-test>
+            <app-connexion></app-connexion>
       </li>
       <li *ngSwitchCase="1">
-          <app-connexion></app-connexion>
+            <app-test></app-test>
       </li>
       <li *ngSwitchCase="2">
           

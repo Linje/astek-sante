@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Patient } from '../model/patient';
-import { LISTPATIENT } from '../mock/mockListPatient';
+//import { LISTPATIENT } from '../mock/mockListPatient';
 import { Symptome } from '../model/symptome';
+import { urlWebApi } from '../mock/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
 
 @Injectable()
 export class ProfessionnelSanteService {
-
-  private url: string = 'http://localhost:8080/api/webapi/professional';
 
   private currentId : string;
   private listPatient: Patient[];
@@ -16,24 +15,10 @@ export class ProfessionnelSanteService {
 
   constructor(private http: Http) {}
 
-  public connexion(id : string, psw : string): Promise<boolean>{
-    return new Promise((resolve, reject) => {
-      this.http.get(this.url+"/connection/"+ id + "/" + psw)
-      .subscribe(data => {
-          let b : boolean;
-          if(data.text() === 'true') b=true;
-          else b=false;;
-          return resolve(b);
-         }, (err) => {
-           alert(err);
-             reject(err);
-         });
-      });
-  }
 
-  public getListPatient(id : string): Promise<Patient[]>{
+  public getListPatient(): Promise<Patient[]>{
     return new Promise((resolve, reject) => {
-      this.http.get(this.url+"/"+ id)
+      this.http.get(urlWebApi+"/"+ this.currentId)
       .subscribe(data => {
           let list: Patient[] = [];
           let res = data.json();
@@ -65,7 +50,7 @@ export class ProfessionnelSanteService {
     let options = new RequestOptions({ headers: headers });
 
     return new Promise((resolve, reject) => {
-      this.http.post(this.url + "/" + this.currentId,JSON.stringify(p), options)
+      this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), options)
         .subscribe(res => {
             alert("Données envoyées");
             return resolve(null);
@@ -74,6 +59,14 @@ export class ProfessionnelSanteService {
         reject(err);
       });
   });
+  }
+
+  public setCurrentId(id : string) : void{
+    this.currentId = id;
+  }
+
+  public getCurrentId() : string{
+    return this.currentId;
   }
 
 }

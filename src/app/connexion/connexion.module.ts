@@ -5,9 +5,7 @@ import { ConnexionComponent } from './connexion.component';
 
 
 @NgModule({
-  imports: [
-
-  ],
+  imports: [],
   declarations: [
   ConnexionComponent],
   exports: [

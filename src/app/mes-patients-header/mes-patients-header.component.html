@@ -1,0 +1,30 @@
+<div class="container">
+
+    <h1 class="display-3">
+        App Name
+        <small class="text-muted">- Mes Patients</small>  
+        <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
+    </h1>
+    
+    <br/><br/><br/>
+
+    <table class="table table-hover">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">NumberP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let listPatient of professionnelSanteService.getListPatient()">
+            <th scope="row">Default</th>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td>Column content</td>
+          </tr>
+         
+        </tbody>
+      </table> 
+</div>

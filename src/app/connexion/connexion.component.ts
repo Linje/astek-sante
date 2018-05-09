@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
 import { PageService } from '../../service/page.service';
+import { ConnexionService } from '../../service/connexion.service';
 
 @Component({
   selector: 'app-connexion',
@@ -12,12 +12,12 @@ export class ConnexionComponent implements OnInit {
   private identifiant : string;
   private password : string;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private pageService:PageService) { }
+  constructor(private connexionService : ConnexionService, private pageService:PageService) { }
 
   ngOnInit() {}
 
   connexion(id : string, psw : string){    
-    this.professionnelSanteService.connexion(id,psw)
+    this.connexionService.connect(id,psw)
     .then(res => {
       if(res){
         this.pageService.setPage(1); 

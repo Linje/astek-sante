@@ -4,6 +4,7 @@ import { Patient } from '../../model/patient';
 import { PageService } from '../../service/page.service';
 import { Symptome } from '../../model/symptome';
 import { Valeur } from '../../model/valeur';
+import { ConnexionService } from '../../service/connexion.service';
 
 
 @Component({
@@ -13,7 +14,9 @@ import { Valeur } from '../../model/valeur';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private pageService:PageService, private professionnelSanteService : ProfessionnelSanteService) { }
+  constructor(private pageService:PageService, 
+    private professionnelSanteService : ProfessionnelSanteService,
+    private connexionService : ConnexionService) { }
 
   ngOnInit() {
   }
@@ -21,7 +24,8 @@ export class TestComponent implements OnInit {
 
   getTest() {
     //test de get
-    this.professionnelSanteService.getListPatient("pf1_id").then((list)=>{
+    this.professionnelSanteService.setCurrentId("pf1_id");
+    this.professionnelSanteService.getListPatient().then((list)=>{
       alert(list);
     });
   }
@@ -40,7 +44,7 @@ export class TestComponent implements OnInit {
   }
 
   connexionTest(){
-    this.professionnelSanteService.connexion("pf1_id","pf1_psw")
+    this.connexionService.connect("pf1_id","pf1_psw")
     .then(res => {
       alert(res);
       });

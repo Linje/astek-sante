@@ -10,6 +10,18 @@
 
     <br/><br/><br/>
 
-    <app-mes-patients-liste></app-mes-patients-liste>
-
+    <div [ngSwitch]="page">
+        <p *ngSwitchCase="0">
+            <app-mes-patients-liste></app-mes-patients-liste>
+            <button type="button" class="btn btn-outline-secondary" (click)="ajoutPatient()">+ Ajouter un patient</button>
+        </p>
+        <p *ngSwitchCase="1">
+            <!--<app-mes-patients-ajout(messageEvent)='messageEvent($event)'> </app-mes-patients-ajout>-->
+            <app-mes-patients-ajout> </app-mes-patients-ajout>
+            <button type="button" class="btn btn-danger" (click)="annuler()">Annuler</button>
+        </p>
+        <p *ngSwitchDefault>  
+        </p>
+    </div>
 </div>
+

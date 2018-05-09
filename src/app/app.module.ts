@@ -13,13 +13,15 @@ import { AppComponent } from './app.component';
 import { MesPatientsHeaderComponent } from './mes-patients-header/mes-patients-header.component';
 import { TestComponent } from './test/test.component';
 import { MesPatientsListeComponent } from './mes-patients-liste/mes-patients-liste.component';
+import { MesPatientsAjoutComponent } from './mes-patients-ajout/mes-patients-ajout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     MesPatientsHeaderComponent,
-    MesPatientsListeComponent
+    MesPatientsListeComponent,
+    MesPatientsAjoutComponent
   ],
   imports: [
     HttpModule,

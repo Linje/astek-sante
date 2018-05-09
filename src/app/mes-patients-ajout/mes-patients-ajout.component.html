@@ -1,0 +1,23 @@
+
+  <div class="form-group">
+      <label class="col-form-label" for="inputDefault">Nom</label>
+      <input class="form-control" placeholder="tapez le nom du patient ici" id="nom" type="text" #nom>
+  </div>
+
+  <br/>
+
+  <div class="form-group">
+    <label class="col-form-label" for="inputDefault">Prenom</label>
+    <input class="form-control" placeholder="tapez le prenom du patient ici" id="prenom" type="text" #prenom>
+  </div>
+
+  <br/>
+  
+  <div class="form-group">
+    <label class="col-form-label" for="inputDefault">Date de Naissance (format xx/xx/xxxx)</label>
+    <input class="form-control" placeholder="tapez la date de naissance du patient ici" id="nom" type="text" #dateDeNaissance>
+  </div>
+
+  <br/><br/><br/>
+
+  <button type="button" class="btn btn-success" (click)="ajouterUnPatient(nom.value, prenom.value, dateDeNaissance.value)">Ajouter</button>

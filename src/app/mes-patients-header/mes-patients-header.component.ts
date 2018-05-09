@@ -9,9 +9,12 @@ import { PageService } from '../../service/page.service';
 })
 export class MesPatientsHeaderComponent implements OnInit {
 
+  private page: number;
+  
   constructor(private professionnelSanteService : ProfessionnelSanteService, private pageService: PageService) { }
 
   ngOnInit() {
+    this.page = 0;
   }
 
   deconnect(){
@@ -19,6 +22,18 @@ export class MesPatientsHeaderComponent implements OnInit {
       this.pageService.setPage(0);
       this.professionnelSanteService.setCurrentId("");
     } 
+  }
+
+  ajoutPatient(){
+    this.page = 1;
+  }
+
+  pageEvent(page : number){
+    this.page = page;
+  }
+
+  annuler(){
+    this.page = 0;
   }
 
 }

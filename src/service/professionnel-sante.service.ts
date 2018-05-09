@@ -16,7 +16,7 @@ export class ProfessionnelSanteService {
   constructor(private http: Http) {}
 
 
-  public getListPatient(): Promise<Patient[]>{
+  public getListPatientWebApi(): Promise<Patient[]>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/"+ this.currentId)
       .subscribe(data => {
@@ -67,6 +67,14 @@ export class ProfessionnelSanteService {
 
   public getCurrentId() : string{
     return this.currentId;
+  }
+
+  public setListPatient(listPatient : Patient[]){
+    this.listPatient = listPatient;
+  }
+
+  public getListPatient() : Patient[]{
+    return this.listPatient;
   }
 
 }

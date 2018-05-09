@@ -25,7 +25,7 @@ export class TestComponent implements OnInit {
   getTest() {
     //test de get
     this.professionnelSanteService.setCurrentId("pf1_id");
-    this.professionnelSanteService.getListPatient().then((list)=>{
+    this.professionnelSanteService.getListPatientWebApi().then((list)=>{
       alert(list);
     });
   }

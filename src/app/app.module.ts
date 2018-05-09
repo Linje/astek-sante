@@ -12,12 +12,14 @@ import { ConnexionService } from '../service/connexion.service';
 import { AppComponent } from './app.component';
 import { MesPatientsHeaderComponent } from './mes-patients-header/mes-patients-header.component';
 import { TestComponent } from './test/test.component';
+import { MesPatientsListeComponent } from './mes-patients-liste/mes-patients-liste.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    MesPatientsHeaderComponent
+    MesPatientsHeaderComponent,
+    MesPatientsListeComponent
   ],
   imports: [
     HttpModule,

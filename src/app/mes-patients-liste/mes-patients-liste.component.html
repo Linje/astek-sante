@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+    <tr class="table-success">
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Date de naissance</th>
+      <th scope="col">NumberP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of professionnelSanteService.getListPatient()">
+      <!--<th scope="row">Default</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>-->
+      <td>{{patient.getNom()}}</td>
+      <td>{{patient.getPrenom()}}</td>
+      <td>{{patient.getDateDeNaissance()}}</td>
+      <td>{{patient.getNumberP()}}</td>
+    </tr>
+  </tbody>
+</table> 

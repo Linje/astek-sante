@@ -28,8 +28,13 @@ export class MesPatientsHeaderComponent implements OnInit {
     this.page = 1;
   }
 
-  pageEvent(page : number){
-    this.page = page;
+  pageEvent(aj : boolean){
+    if(aj){
+      this.page = 0;
+    }
+    else{
+      this.page = 0;
+    } 
   }
 
   annuler(){

@@ -21,13 +21,13 @@ export class ConnexionComponent implements OnInit {
     this.connexionService.connect(id,psw)
     .then(res => {
       if(res){
-        this.professionnelSanteService.setCurrentId("pf1_id");
+        this.professionnelSanteService.setCurrentId(id);
         this.professionnelSanteService.getListPatientWebApi().then(data =>
         {
            this.professionnelSanteService.setListPatient(data);
         });
-        this.pageService.setPage(1); 
-        alert("connecté")
+        
+        this.pageService.setPage(1);
       }
       else{
         alert("identifiant ou mot de passe incorrect");

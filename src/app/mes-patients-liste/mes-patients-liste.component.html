@@ -9,10 +9,6 @@
   </thead>
   <tbody>
     <tr *ngFor="let patient of professionnelSanteService.getListPatient()">
-      <!--<th scope="row">Default</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>-->
       <td>{{patient.getNom()}}</td>
       <td>{{patient.getPrenom()}}</td>
       <td>{{patient.getDateDeNaissance()}}</td>

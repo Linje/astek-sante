@@ -40,7 +40,7 @@ export class ProfessionnelSanteService {
   }
 
   public addPatient(p : Patient) : Promise<void>{
-    this.currentId = "pf2_id"; // JUSTE POUR LE TEST
+    //this.currentId = "pf2_id"; // JUSTE POUR LE TEST
 
     //envoie des données au webService
     let headers = new Headers(

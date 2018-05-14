@@ -52,7 +52,7 @@ export class ProfessionnelSanteService {
     return new Promise((resolve, reject) => {
       this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), options)
         .subscribe(res => {
-            alert("Données envoyées");
+            //alert("Données envoyées");
             return resolve(null);
        }, (err) => {
          alert(err);

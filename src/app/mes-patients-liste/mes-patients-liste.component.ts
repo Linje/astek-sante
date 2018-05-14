@@ -8,17 +8,8 @@ import { Patient } from '../../model/patient';
   styleUrls: ['./mes-patients-liste.component.css']
 })
 export class MesPatientsListeComponent implements OnInit{
-
-  private listPatient: Patient[];
  
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
-  ngOnInit() {
-    this.professionnelSanteService.getListPatientWebApi().then(data =>
-      {
-        alert("list");
-         this.professionnelSanteService.setListPatient(data);
-         this.listPatient = this.professionnelSanteService.getListPatient();
-      });
-  }
+  ngOnInit() {}
 }

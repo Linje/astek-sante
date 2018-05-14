@@ -9,8 +9,8 @@ export class Patient {
     private alarmActivation : boolean;
     private listSymptome : Symptome[];
 
-    constructor(numberPatient : number, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptome : Symptome[]){
-        this.numberP = "p"+ numberPatient; //numberPatient = nombre de patient total
+    constructor(numberP : string, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptome : Symptome[]){
+        this.numberP = numberP; //numberPatient = nombre de patient total
         this.nom = nom;
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;

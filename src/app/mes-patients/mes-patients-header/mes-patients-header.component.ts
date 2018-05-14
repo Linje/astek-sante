@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
-import { PageService } from '../../service/page.service';
+import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
+import { PageService } from '../../../service/page.service';
 
 @Component({
   selector: 'app-mes-patients-header',

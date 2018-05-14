@@ -15,8 +15,13 @@
   
   <div class="form-group">
     <label class="col-form-label" for="inputDefault">Date de Naissance (format xx/xx/xxxx)</label>
-    <input class="form-control" placeholder="tapez la date de naissance du patient ici" id="nom" type="text" #dateDeNaissance>
+    <input class="form-control" placeholder="tapez la date de naissance du patient ici" id="dateDeNaissance" type="text" #dateDeNaissance>
   </div>
+
+  <br/>
+
+  Bouton d'Alarme :&nbsp;&nbsp; {{alarme}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class={{classAlarmeButton}} (click)="changerAlarme()">{{alarmeButton}}</button>
 
   <br/><br/><br/>
 

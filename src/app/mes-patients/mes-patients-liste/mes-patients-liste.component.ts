@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
-import { Patient } from '../../model/patient';
+import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
+import { Patient } from '../../../model/patient';
 
 @Component({
   selector: 'app-mes-patients-liste',

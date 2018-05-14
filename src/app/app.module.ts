@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpModule } from '@angular/http';
-import { ConnexionModule } from './connexion/connexion.module';
 import { CommonModule } from '@angular/common';
 
 import { PageService } from '../service/page.service';
@@ -10,24 +9,23 @@ import { ProfessionnelSanteService } from '../service/professionnel-sante.servic
 import { ConnexionService } from '../service/connexion.service';
 
 import { AppComponent } from './app.component';
-import { MesPatientsHeaderComponent } from './mes-patients-header/mes-patients-header.component';
+
 import { TestComponent } from './test/test.component';
-import { MesPatientsListeComponent } from './mes-patients-liste/mes-patients-liste.component';
-import { MesPatientsAjoutComponent } from './mes-patients-ajout/mes-patients-ajout.component';
+import { ConnexionModule } from './connexion/connexion.module';
+import { MesPatientsModule } from './mes-patients/mes-patients.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    MesPatientsHeaderComponent,
-    MesPatientsListeComponent,
-    MesPatientsAjoutComponent
+    TestComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
     CommonModule,
-    ConnexionModule
+    ConnexionModule,
+    MesPatientsModule
   ],
   providers: [
     PageService,

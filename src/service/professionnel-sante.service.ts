@@ -22,7 +22,6 @@ export class ProfessionnelSanteService {
       .subscribe(data => {
           let list: Patient[] = [];
           let res = data.json();
-          console.log(data.json());
           let i = 0;
           while(res[i] != undefined){
             let patient = new Patient(res[i]["numberP"], res[i]["nom"], res[i]["prenom"],res[i]["dateDeNaissance"],res[i]["alarmActivation"],[]);

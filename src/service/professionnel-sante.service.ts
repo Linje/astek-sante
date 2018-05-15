@@ -68,12 +68,20 @@ export class ProfessionnelSanteService {
     return this.currentId;
   }
 
-  public setListPatient(listPatient : Patient[]){
+  public setListPatient(listPatient : Patient[]) : void{
     this.listPatient = listPatient;
   }
 
   public getListPatient() : Patient[]{
     return this.listPatient;
+  }
+
+  public setCurrentPatient(p : Patient) : void{
+    this.currentPatient = p;
+  }
+
+  public getCurrentPatient() : Patient{
+    return this.currentPatient;
   }
 
 }

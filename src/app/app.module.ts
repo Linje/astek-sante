@@ -13,12 +13,14 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { ConnexionModule } from './connexion/connexion.module';
 import { MesPatientsModule } from './mes-patients/mes-patients.module';
+import { VisualisationMenuComponent } from './visualisation-menu/visualisation-menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    VisualisationMenuComponent
   ],
   imports: [
     HttpModule,

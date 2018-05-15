@@ -41,8 +41,7 @@ export class MesPatientsAjoutComponent implements OnInit {
          break;              
       } 
    }  
-  }
-  
+  } 
 
 
   ajouterUnPatient(nom : string, prenom : string, dateDeNaissance : string){

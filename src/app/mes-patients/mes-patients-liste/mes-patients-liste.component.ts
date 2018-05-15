@@ -16,6 +16,10 @@ export class MesPatientsListeComponent implements OnInit{
 
   clickPatient(p: Patient){
     this.professionnelSanteService.setCurrentPatient(p);
-    this.pageService.setPage(2);
+    this.professionnelSanteService.getListSymptomeWebApi().then((s)=>{
+      this.professionnelSanteService.getCurrentPatient().setListSymptome(s);
+      this.pageService.setPage(2);
+    });
+    
   }
 }

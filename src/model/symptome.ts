@@ -7,8 +7,8 @@ export class Symptome {
     private echelle : number[];
     private listValeur : Valeur[];
 
-    constructor(numberSymptome : number, nom : string, description : string, echelle : number[], listValeur : Valeur[]){
-        this.numberS = "s" + numberSymptome; //numberSymptom = nombre de symptome au total
+    constructor(numberS : string, nom : string, description : string, echelle : number[], listValeur : Valeur[]){
+        this.numberS = numberS; //numberSymptom = nombre de symptome au total
         this.nom = nom;
         this.description = description;
         this.echelle = echelle;

@@ -5,6 +5,7 @@ import { Symptome } from '../model/symptome';
 import { urlWebApi } from '../mock/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
+import { Valeur } from '../model/valeur';
 
 @Injectable()
 export class ProfessionnelSanteService {
@@ -37,6 +38,28 @@ export class ProfessionnelSanteService {
     
     //return LISTPATIENT --> pour le Test;
   }
+
+  
+  public getListSymptomeWebApi() : Promise<Symptome[]>{
+    return new Promise((resolve, reject) => {
+      this.http.get(urlWebApi+"/"+ this.currentId +"/"+ this.currentPatient.getNumberP())
+      .subscribe(data => {
+          let list: Symptome[] = [];
+          let res = data.json();
+          let i = 0;
+          while(res[i] != undefined){
+            let symptome = new Symptome(res[i]["numberS"], res[i]["nom"], res[i]["description"],res[i]["echelle"],[]);
+            list.push(symptome);
+            i = i + 1;
+          }
+          return resolve(list);
+         }, (err) => {
+           alert(err);
+             reject(err);
+         });
+      });
+  }
+  
 
   public addPatient(p : Patient) : Promise<void>{
     //this.currentId = "pf2_id"; // JUSTE POUR LE TEST

@@ -1,0 +1,24 @@
+<app-visualisation-menu></app-visualisation-menu>
+
+<div class="container">
+      <h1 class="display-3">
+          App Name
+          <small class="text-muted">- Visualisation</small>
+          <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
+          <FONT size="1">| Patient : {{professionnelSanteService.getCurrentPatient().getNom()}}</FONT>
+          <FONT size="1"> {{professionnelSanteService.getCurrentPatient().getPrenom()}}</FONT>
+      </h1>
+  
+      <br/><br/><br/>
+  
+      <div [ngSwitch]="page">
+          <p *ngSwitchCase="0">
+              <app-visualisation-tab-symptome></app-visualisation-tab-symptome>
+          </p>
+          <p *ngSwitchCase="1">
+              
+          </p>
+          <p *ngSwitchDefault>  
+          </p>
+      </div>
+</div>

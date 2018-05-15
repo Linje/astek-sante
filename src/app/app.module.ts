@@ -13,21 +13,22 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { ConnexionModule } from './connexion/connexion.module';
 import { MesPatientsModule } from './mes-patients/mes-patients.module';
-import { VisualisationMenuComponent } from './visualisation-menu/visualisation-menu.component';
+import { VisualisationModule } from './visualisation/visualisation.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    VisualisationMenuComponent
+    TestComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
     CommonModule,
     ConnexionModule,
-    MesPatientsModule
+    MesPatientsModule,
+    VisualisationModule
   ],
   providers: [
     PageService,

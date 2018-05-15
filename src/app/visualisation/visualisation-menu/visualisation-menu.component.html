@@ -6,11 +6,12 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
       <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-        <a class="dropdown-item" (click)="test()">Action</a>
-        <a class="dropdown-item" >Another action</a>
-        <a class="dropdown-item" >Something else here</a>
+        <a class="dropdown-item" href="#" (click)="test()">Nouveau symptome</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" >Separated link</a>
+        <a class="dropdown-item" href="#" >Parametre du patient</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" (click)="retourMesPatients()">Retour à Mes Patients</a>
+        <a class="dropdown-item" href="#" (click)="Deconnexion()">Deconnexion</a>
       </div>
     </li>
 </ul>

@@ -1,0 +1,12 @@
+<p>visualisation graphique</p>
+
+<kendo-chart [categoryAxis]="{categories: years}">
+  <kendo-chart-title text='Student Exam Results'></kendo-chart-title>
+  <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
+  <kendo-chart-series>
+    <kendo-chart-series-item *ngFor="let student of students" type="line" [data]="student.results" [name]="student.name">
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+</kendo-chart>
+
+                          

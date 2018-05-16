@@ -1,44 +1,9 @@
-
- 
-<ul class="nav nav-tabs">
-    <li class="nav-item" *ngFor="let symptome of listSymptom">
-      <a class="nav-link" data-toggle="tab" href="#{{symptome.getNom()}}">{{symptome.getNom()}}</a>
-    </li>
-</ul>
-
-<div id="myTabContent" class="tab-content">
-     <div *ngFor="let symptome of listSymptom">
-      <div class="tab-pane fade" id={{symptome.getNom()}}>
-        <p>{{symptome.getDescription()}}</p>
-      </div>
-    </div> 
-</div>
-<!--
--->
-<!--
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#home">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#{{professionnelSanteService.getCurrentPatient().getListSymptome()[0].getNom()}}">{{professionnelSanteService.getCurrentPatient().getListSymptome()[0].getNom()}}</a>
-    </li>
-
-  </ul>
-  
-  <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade" id="home">
-      <p>Home</p>
-    </div>
-    <div class="tab-pane fade" id="profile">
-      <p>Profile</p>
-    </div>
-    <div class="tab-pane fade" id={{professionnelSanteService.getCurrentPatient().getListSymptome()[0].getNom()}}>
-        <p>symptome 1</p>
-    </div>
+<div class="row">
+  <div *ngFor="let symptome of this.professionnelSanteService.getCurrentPatient().getListSymptome()" [class.selected]="symptome === symptomeSelectionne">
+    <button type="button" class="btn btn-outline-info" (click)="afficherSymptome(symptome)">{{symptome.getNom()}}</button>    
   </div>
--->
+</div>
+
+<app-visualisation-symptome [symptome]="symptomeSelectionne"></app-visualisation-symptome>
+
 

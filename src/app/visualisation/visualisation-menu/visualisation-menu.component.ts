@@ -27,7 +27,7 @@ export class VisualisationMenuComponent implements OnInit {
         this.professionnelSanteService.setCurrentId("");
         this.professionnelSanteService.setCurrentPatient(null);
       } 
-    }
+    
   }
 
 }

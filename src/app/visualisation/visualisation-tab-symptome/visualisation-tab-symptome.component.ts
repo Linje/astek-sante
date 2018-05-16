@@ -9,14 +9,14 @@ import { Symptome } from '../../../model/symptome';
 })
 export class VisualisationTabSymptomeComponent implements OnInit {
 
-  private listSymptom : Symptome[];
+  private symptomeSelectionne : Symptome;
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
-  ngOnInit() {
-    this.listSymptom = this.professionnelSanteService.getCurrentPatient().getListSymptome();
+  ngOnInit() {}
+
+  afficherSymptome(symptome : Symptome){
+    this.symptomeSelectionne = symptome;
   }
-
-
 
 }

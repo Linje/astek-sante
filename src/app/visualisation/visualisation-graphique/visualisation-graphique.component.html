@@ -1,4 +1,11 @@
 <div *ngIf="symptome">
+  <br/>
+  <hr class="my-4">
+  <div class="text-center">
+    <h3>{{symptome.getNom()}}</h3>
+  </div>
+  <hr class="my-4">
+  <br/>
   <h4>Graphique des valeurs :</h4>
 
   <kendo-chart [categoryAxis]="{categories: abscisse}">

@@ -10,13 +10,21 @@ import { Symptome } from '../../../model/symptome';
 export class VisualisationTabSymptomeComponent implements OnInit {
 
   private symptomeSelectionne : Symptome;
+  private switch : boolean;
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.switch = true;
+  }
 
   afficherSymptome(symptome : Symptome){
     this.symptomeSelectionne = symptome;
+    this.switch = true;
+  }
+
+  afficherTousLesSymptomes(){
+    this.switch = false;
   }
 
 }

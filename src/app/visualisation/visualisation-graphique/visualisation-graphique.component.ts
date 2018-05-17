@@ -9,36 +9,13 @@ import { ProfessionnelSanteService } from '../../../service/professionnel-sante.
 })
 export class VisualisationGraphiqueComponent implements OnInit, OnChanges {
   @Input() symptome: Symptome;
-/*
-  years: Array<Number> = [2012, 2013, 2014, 2015];
-  students = [
-    {
-      name : 'Paul',
-      results : [90, 77, 34, 30]
-    },
-    {
-      name : 'Katie',
-      results : [80, 21, 14, 30]
-    },
-    {
-      name : 'Dave',
-      results : [20, 77, 64, 30]
-    },
-    {
-      name : 'Sarah',
-      results : [70, 76, 94, 10]
-    }
-  ];
-*/
 
 private abscisse : Array<string> = new Array();
 private ordonnee : Array<number> = new Array();
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['symptome']){

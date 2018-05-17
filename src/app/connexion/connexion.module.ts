@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ConnexionComponent } from './connexion.component';
 
-// import the new component
+// route
 
 
 @NgModule({

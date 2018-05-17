@@ -6,6 +6,7 @@ import { VisualisationHeaderComponent } from './visualisation-header/visualisati
 import { VisualisationTabSymptomeComponent } from './visualisation-tab-symptome/visualisation-tab-symptome.component';
 import { VisualisationSymptomeComponent } from './visualisation-symptome/visualisation-symptome.component';
 import { VisualisationGraphiqueComponent } from './visualisation-graphique/visualisation-graphique.component';
+import { VisualisationGraphiqueTousLesSymptomesComponent } from './visualisation-graphique-tous-les-symptomes/visualisation-graphique-tous-les-symptomes.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from '@progress/kendo-angular-charts';
@@ -22,11 +23,13 @@ import 'hammerjs';
     VisualisationHeaderComponent,
     VisualisationTabSymptomeComponent,
     VisualisationSymptomeComponent,
-    VisualisationGraphiqueComponent],
+    VisualisationGraphiqueComponent,
+    VisualisationGraphiqueTousLesSymptomesComponent],
   exports : [VisualisationMenuComponent,
     VisualisationHeaderComponent,
     VisualisationTabSymptomeComponent,
     VisualisationSymptomeComponent,
-    VisualisationGraphiqueComponent]
+    VisualisationGraphiqueComponent,
+    VisualisationGraphiqueTousLesSymptomesComponent]
 })
 export class VisualisationModule { }

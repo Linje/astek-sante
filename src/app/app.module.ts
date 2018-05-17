@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
 
-//Pour les graphiques
-
-//------------------
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 
@@ -18,6 +15,9 @@ import { ConnexionModule } from './connexion/connexion.module';
 import { MesPatientsModule } from './mes-patients/mes-patients.module';
 import { VisualisationModule } from './visualisation/visualisation.module';
 
+//Routes
+
+//-------
 
 
 @NgModule({

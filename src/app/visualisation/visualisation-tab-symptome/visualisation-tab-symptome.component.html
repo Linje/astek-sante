@@ -1,9 +1,13 @@
 <div class="row">
   <div *ngFor="let symptome of this.professionnelSanteService.getCurrentPatient().getListSymptome()" [class.selected]="symptome === symptomeSelectionne">
-    <button type="button" class="btn btn-outline-info" (click)="afficherSymptome(symptome)">{{symptome.getNom()}}</button>    
+    <button type="button" class="btn btn-outline-info" (click)="afficherSymptome(symptome)">{{symptome.getNom()}}</button>
+    | 
   </div>
+    <button type="button" class="btn btn-outline-info" >Tous les symptomes</button>
 </div>
 
+<app-visualisation-graphique [symptome]="symptomeSelectionne"></app-visualisation-graphique>
+<br>
 <app-visualisation-symptome [symptome]="symptomeSelectionne"></app-visualisation-symptome>
 
 

@@ -18,6 +18,13 @@ export class MesPatientsListeComponent implements OnInit{
     this.professionnelSanteService.setCurrentPatient(p);
     this.professionnelSanteService.getListSymptomeWebApi().then((s)=>{
       this.professionnelSanteService.getCurrentPatient().setListSymptome(s);
+      //pour chaque symptome, charger ses valeurs
+      for(let s of this.professionnelSanteService.getCurrentPatient().getListSymptome()){
+        this.professionnelSanteService.getListValeurWebApi(s.getNumberS()).then((v)=>{
+            s.setListValeur(v);
+        });
+      }
+      //----------------------------------------
       this.pageService.setPage(2);
     });
     

@@ -1,12 +1,16 @@
-<p>visualisation graphique</p>
+<div *ngIf="symptome">
+  <h4>Graphique des valeurs :</h4>
 
-<kendo-chart [categoryAxis]="{categories: years}">
-  <kendo-chart-title text='Student Exam Results'></kendo-chart-title>
-  <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
-  <kendo-chart-series>
-    <kendo-chart-series-item *ngFor="let student of students" type="line" [data]="student.results" [name]="student.name">
-    </kendo-chart-series-item>
-  </kendo-chart-series>
-</kendo-chart>
+  <kendo-chart [categoryAxis]="{categories: abscisse}">
+    <kendo-chart-title ></kendo-chart-title>
+    <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
+    <kendo-chart-series>
+      <!--<kendo-chart-series-item *ngFor="let student of students" type="line" [data]="student.results" [name]="student.name">-->
+      <kendo-chart-series-item type="line" [data]="ordonnee">
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
+
+</div>
 
                           

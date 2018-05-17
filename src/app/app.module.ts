@@ -2,9 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
 
 //Pour les graphiques
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { ChartsModule } from '@progress/kendo-angular-charts';
-import 'hammerjs';
+
 //------------------
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
@@ -33,10 +31,7 @@ import { VisualisationModule } from './visualisation/visualisation.module';
     CommonModule,
     ConnexionModule,
     MesPatientsModule,
-    VisualisationModule,
-
-    BrowserAnimationsModule,
-    ChartsModule
+    VisualisationModule
   ],
   providers: [
     PageService,

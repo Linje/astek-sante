@@ -16,6 +16,7 @@ export class ProfessionnelSanteService {
 
   constructor(private http: Http) {}
 
+// Get
 
   public getListPatientWebApi(): Promise<Patient[]>{
     return new Promise((resolve, reject) => {
@@ -59,7 +60,28 @@ export class ProfessionnelSanteService {
          });
       });
   }
+
+  public getListValeurWebApi(numberS : string) : Promise<Valeur[]>{
+    return new Promise((resolve, reject) => {
+      this.http.get(urlWebApi+"/"+ this.currentId +"/"+ this.currentPatient.getNumberP()+"/"+numberS)
+      .subscribe(data => {
+          let list: Valeur[] = [];
+          let res = data.json();
+          let i = 0;
+          while(res[i] != undefined){
+            let valeur = new Valeur(res[i]["intensite"], new Date(res[i]["date"]));
+            list.push(valeur);
+            i = i + 1;
+          }
+          return resolve(list);
+         }, (err) => {
+           alert(err);
+             reject(err);
+         });
+      });
+  }
   
+//Post
 
   public addPatient(p : Patient) : Promise<void>{
     //this.currentId = "pf2_id"; // JUSTE POUR LE TEST
@@ -83,6 +105,8 @@ export class ProfessionnelSanteService {
   });
   }
 
+
+  //get & set
   public setCurrentId(id : string) : void{
     this.currentId = id;
   }

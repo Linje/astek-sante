@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
+import { PageService } from '../../../service/page.service';
 
 @Component({
   selector: 'app-visualisation-header',
@@ -10,10 +11,31 @@ export class VisualisationHeaderComponent implements OnInit {
 
   private page : number;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private pageService : PageService) { }
 
   ngOnInit() {
     this.page = 0;
+  }
+
+   pageEvent(aj : boolean){
+    this.page = 0;
+  }
+
+  nouveauSymptome(){
+    this.page = 1;
+  }
+
+  retourMesPatients(){
+    this.pageService.setPage(1);
+  }
+
+  Deconnexion(){
+      if(confirm("Vous êtes sur de vouloir vous deconnecter ?")) {
+        this.pageService.setPage(0);
+        this.professionnelSanteService.setCurrentId("");
+        this.professionnelSanteService.setCurrentPatient(null);
+      } 
+    
   }
 
 }

@@ -1,0 +1,42 @@
+
+<hr class="my-4">
+<div class="text-center">
+  <h3>Ajouter un symptome</h3>
+</div>
+<hr class="my-4">
+
+<br/>
+
+<div class="form-group">
+    <label class="col-form-label" for="inputDefault">Nom</label>
+    <input class="form-control" placeholder="tapez le nom du symptome ici" id="nom" type="text" #nom>
+</div>
+
+<br/>
+
+<div class="form-group">
+  <label for="exampleTextarea">Description</label>
+  <textarea class="form-control" placeholder="tapez la description du symptome ici" id="description" type="text" rows="3" #description></textarea>
+</div>
+
+<br/>
+
+<b>Echelle</b>
+<br/>
+<div class="row">
+    &nbsp;&nbsp;&nbsp;
+    <div class="form-group">
+        <input class="form-control" id="echelle1" type="number" #echelle1>
+    </div>
+    <div>
+        &nbsp; à &nbsp;
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="echelle2" type="number" #echelle2>
+    </div>
+</div>
+
+<br/><br/>
+
+<button type="button" class="btn btn-success" (click)="ajouterUnSymptome(nom.value, description.value, echelle1.value, echelle2.value)">Ajouter</button>
+<button type="button" class="btn btn-danger" (click)="annuler()">Annuler</button>

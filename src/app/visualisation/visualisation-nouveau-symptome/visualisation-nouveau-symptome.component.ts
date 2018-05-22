@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Symptome } from '../../../model/symptome';
+import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
 
 @Component({
   selector: 'app-visualisation-nouveau-symptome',
@@ -9,13 +11,18 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
 
   @Output() pageEvent = new EventEmitter<boolean>();
   
-  constructor() { }
+  constructor(private professionnelSanteService: ProfessionnelSanteService) { }
 
   ngOnInit() {}
 
   ajouterUnSymptome(nom : string, description : string, echelle1 : number, echelle2 : number){
-    alert(nom + description + echelle1 + echelle2);
-    this.pageEvent.emit(false)
+    let s : Symptome = new Symptome("s9",nom,description,[echelle1,echelle2],null);
+    this.professionnelSanteService.addSymptome(s).then(() => {
+      this.professionnelSanteService.getListSymptomeWebApi().then(data => {
+        this.professionnelSanteService.getCurrentPatient().setListSymptome(data);
+      });
+      this.pageEvent.emit(false);
+    });
   }
 
   annuler(){

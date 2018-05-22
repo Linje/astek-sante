@@ -102,7 +102,27 @@ export class ProfessionnelSanteService {
          alert(err);
         reject(err);
       });
-  });
+    });
+  }
+
+  public addSymptome(s : Symptome) : Promise<void>{
+    //envoie des données au webService
+    let headers = new Headers(
+      {
+        'Content-Type' : 'application/json'
+      });
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise((resolve, reject) => {
+      this.http.post(urlWebApi + "/" + this.currentId + "/" + this.currentPatient.getNumberP(),JSON.stringify(s), options)
+        .subscribe(res => {
+            //alert("Données envoyées");
+            return resolve(null);
+       }, (err) => {
+         alert(err);
+        reject(err);
+      });
+    });
   }
 
 

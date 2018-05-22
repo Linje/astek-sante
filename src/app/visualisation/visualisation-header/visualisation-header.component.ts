@@ -27,6 +27,7 @@ export class VisualisationHeaderComponent implements OnInit {
 
   retourMesPatients(){
     this.pageService.setPage(1);
+    this.professionnelSanteService.setCurrentPatient(null);
   }
 
   Deconnexion(){

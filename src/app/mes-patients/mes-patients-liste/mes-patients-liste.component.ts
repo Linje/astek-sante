@@ -22,10 +22,9 @@ export class MesPatientsListeComponent implements OnInit{
       for(let s of this.professionnelSanteService.getCurrentPatient().getListSymptome()){
         this.professionnelSanteService.getListValeurWebApi(s.getNumberS()).then((v)=>{
             s.setListValeur(v);
+            this.pageService.setPage(2);
         });
-      }
-      //----------------------------------------
-      this.pageService.setPage(2);
+      };
     });
     
   }

@@ -29,19 +29,18 @@ private ordonnee : Array<number> = new Array();
     this.abscisse = [];
     this.ordonnee = [];
     for(let v of this.symptome.getListValeur()){
-      this.abscisse.push(this.affichageDate(v.getDate().getDay()) + "/" + 
-      this.affichageDate(v.getDate().getMonth()) + "-" + this.affichageDate(v.getDate().getHours())+ ":" 
-      + this.affichageDate(v.getDate().getMinutes()));
-
+      this.abscisse.push(v.getDate().toString());
       this.ordonnee.push(v.getIntensite());
     }
   }
 
+  /*
   affichageDate(n : number) : string{
     let res : string;
     if(n < 10) res = "0"+ n;
     else res = ""+ n;
     return res;
   }
+  */
 
 }

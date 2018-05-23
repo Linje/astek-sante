@@ -51,7 +51,7 @@ export class MesPatientsAjoutComponent implements OnInit {
     let alarmeActive : boolean;
     if(this.alarme == "Activé") alarmeActive = true;
     else alarmeActive = false;
-    let p : Patient = new Patient("p"+nbr, nom, prenom, dateDeNaissance, alarmeActive, []);
+    let p : Patient = new Patient(nbr, nom, prenom, dateDeNaissance, alarmeActive, []);
     
     this.professionnelSanteService.addPatient(p).then(()=>{
       this.professionnelSanteService.getListPatientWebApi().then(data =>

@@ -26,7 +26,6 @@ private ordonnee : Array<number> = new Array();
   }
 
   initialiserGraph(){
-    alert("visualisation graphique : " +this.symptome.getListValeur());
     this.abscisse = [];
     this.ordonnee = [];
     for(let v of this.symptome.getListValeur()){

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { urlWebApi } from '../mock/urlWebApi';
+import { urlWebApi } from '../constante/urlWebApi';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { ProfessionnelSanteService } from './professionnel-sante.service';
 

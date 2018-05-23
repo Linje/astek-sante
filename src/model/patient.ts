@@ -2,14 +2,14 @@ import { Symptome } from './symptome';
 
 export class Patient {
 
-    private numberP : string;
+    private numberP : number;
     private nom : string;
     private prenom : string;
     private dateDeNaissance : string;
     private alarmActivation : boolean;
     private listSymptome : Symptome[];
 
-    constructor(numberP : string, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptome : Symptome[]){
+    constructor(numberP : number, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptome : Symptome[]){
         this.numberP = numberP; //numberPatient = nombre de patient total
         this.nom = nom;
         this.prenom = prenom;
@@ -18,7 +18,7 @@ export class Patient {
         this.listSymptome = listSymptome;
     }
     // get
-    public getNumberP() : string{
+    public getNumberP() : number{
         return this.numberP;
     }
     public getNom() : string{

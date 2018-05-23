@@ -35,9 +35,9 @@ export class TestComponent implements OnInit {
     let v : Valeur;
     v = new Valeur(3,new Date());
     let s: Symptome;
-    s = new Symptome("s3","symptomeDeTest","descriptionDeTest",[0,10],[v]);
+    s = new Symptome(3,"symptomeDeTest","descriptionDeTest",[0,10],[v]);
     let p:Patient;
-    p = new Patient("p3", "testNom", "testPrenom", "12/01/1996", true,[s])
+    p = new Patient(3, "testNom", "testPrenom", "12/01/1996", true,[s])
     this.professionnelSanteService.addPatient(p).then(()=>{
       alert("good")
     });

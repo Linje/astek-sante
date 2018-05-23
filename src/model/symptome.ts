@@ -1,13 +1,13 @@
 import { Valeur } from './valeur';
 
 export class Symptome {
-    private numberS : string;
+    private numberS : number;
     private nom : string;
     private description : string;
     private echelle : number[];
     private listValeur : Valeur[];
 
-    constructor(numberS : string, nom : string, description : string, echelle : number[], listValeur : Valeur[]){
+    constructor(numberS : number, nom : string, description : string, echelle : number[], listValeur : Valeur[]){
         this.numberS = numberS; //numberSymptom = nombre de symptome au total
         this.nom = nom;
         this.description = description;
@@ -15,7 +15,7 @@ export class Symptome {
         this.listValeur = listValeur;
     }
     // get
-    public getNumberS() : string{
+    public getNumberS() : number{
         return this.numberS;
     }
     public getNom() : string{

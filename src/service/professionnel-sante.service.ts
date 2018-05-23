@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Patient } from '../model/patient';
 //import { LISTPATIENT } from '../mock/mockListPatient';
 import { Symptome } from '../model/symptome';
-import { urlWebApi } from '../mock/urlWebApi';
+import { urlWebApi } from '../constante/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Valeur } from '../model/valeur';
@@ -61,7 +61,7 @@ export class ProfessionnelSanteService {
       });
   }
 
-  public getListValeurWebApi(numberS : string) : Promise<Valeur[]>{
+  public getListValeurWebApi(numberS : number) : Promise<Valeur[]>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/"+ this.currentId +"/"+ this.currentPatient.getNumberP()+"/"+numberS)
       .subscribe(data => {

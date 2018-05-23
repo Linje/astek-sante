@@ -16,7 +16,7 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
   ngOnInit() {}
 
   ajouterUnSymptome(nom : string, description : string, echelle1 : number, echelle2 : number){
-    let s : Symptome = new Symptome("s9",nom,description,[echelle1,echelle2],null);
+    let s : Symptome = new Symptome(9,nom,description,[echelle1,echelle2],null);
     this.professionnelSanteService.addSymptome(s).then(() => {
       this.professionnelSanteService.getListSymptomeWebApi().then(data => {
         this.professionnelSanteService.getCurrentPatient().setListSymptome(data);

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Symptome } from '../../../model/symptome';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
+import { GraphModel } from '../../../model/graphModel';
 
 @Component({
   selector: 'app-visualisation-graphique',
@@ -10,8 +11,10 @@ import { ProfessionnelSanteService } from '../../../service/professionnel-sante.
 export class VisualisationGraphiqueComponent implements OnInit, OnChanges {
   @Input() symptome: Symptome;
 
-private abscisse : Array<string> = new Array();
-private ordonnee : Array<number> = new Array();
+private abscisse : Array<Date> = new Array();
+private ordonnee : any[];//Array<number> = new Array();
+
+private donnee : Array<GraphModel> = new Array();
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
@@ -26,21 +29,10 @@ private ordonnee : Array<number> = new Array();
   }
 
   initialiserGraph(){
-    this.abscisse = [];
-    this.ordonnee = [];
+    this.donnee = [];
+   
     for(let v of this.symptome.getListValeur()){
-      this.abscisse.push(v.getDate().toString());
-      this.ordonnee.push(v.getIntensite());
+      this.donnee.push(new GraphModel(v.getDate(), v.getIntensite()));
     }
   }
-
-  /*
-  affichageDate(n : number) : string{
-    let res : string;
-    if(n < 10) res = "0"+ n;
-    else res = ""+ n;
-    return res;
-  }
-  */
-
 }

@@ -8,16 +8,44 @@
   <br/>
   <h4>Graphique des valeurs :</h4>
 
-  <kendo-chart [categoryAxis]="{categories: abscisse}">
+  <!--<kendo-chart [categoryAxis]="{categories: abscisse}" [labels]="{ format: 'd', rotation: 'auto' }">
     <kendo-chart-title ></kendo-chart-title>
     <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
+    
+    <kendo-chart-value-axis>
+        <kendo-chart-value-axis-item [title]="{ text: 'Intensite' }"
+                                     [min]="symptome.getEchelle()[0]" [max]="symptome.getEchelle()[1]">
+        </kendo-chart-value-axis-item>
+    </kendo-chart-value-axis>
     <kendo-chart-series>
       <!--<kendo-chart-series-item *ngFor="let student of students" type="line" [data]="student.results" [name]="student.name">-->
-      <kendo-chart-series-item type="line" [data]="ordonnee">
+     <!-- <kendo-chart-series-item type="line" [data]="ordonnee">
       </kendo-chart-series-item>
     </kendo-chart-series>
   </kendo-chart>
+  -->
+  <kendo-chart>
+      <kendo-chart-series>
+        <kendo-chart-title></kendo-chart-title>
+        <kendo-chart-series-item type="column" [data]="donnee"
+                                 field="intensite" categoryField="date">
+        </kendo-chart-series-item>
+      </kendo-chart-series>
+
+      <kendo-chart-value-axis>
+          <kendo-chart-value-axis-item [title]="{ text: 'Intensite' }"
+                                       [min]="symptome.getEchelle()[0]" [max]="symptome.getEchelle()[1]">
+          </kendo-chart-value-axis-item>
+      </kendo-chart-value-axis>
+
+      <kendo-chart-category-axis>
+        <kendo-chart-category-axis-item [labels]="{ format: 'd', rotation: 'auto' }">
+        </kendo-chart-category-axis-item>
+      </kendo-chart-category-axis>
+  </kendo-chart>
 
 </div>
+
+
 
                           

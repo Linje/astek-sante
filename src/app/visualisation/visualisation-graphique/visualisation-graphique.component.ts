@@ -35,4 +35,11 @@ private donnee : Array<GraphModel> = new Array();
       this.donnee.push(new GraphModel(v.getDate(), v.getIntensite()));
     }
   }
+
+  public valuePlotBands: any[] = [{
+    from: 24,
+    to: 24,
+    color: '#78d237',
+    opacity: 0.2
+}];
 }

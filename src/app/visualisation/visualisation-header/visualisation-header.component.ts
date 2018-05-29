@@ -25,6 +25,10 @@ export class VisualisationHeaderComponent implements OnInit {
     this.page = 1;
   }
 
+  parametrePatient(){
+    alert("Fonctionnalite non disponible pour le moment");
+  }
+
   retourMesPatients(){
     this.pageService.setPage(1);
     this.professionnelSanteService.setCurrentPatient(null);

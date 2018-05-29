@@ -36,10 +36,12 @@ private donnee : Array<GraphModel> = new Array();
     }
   }
 
-  public valuePlotBands: any[] = [{
+  //---afficher une bare vertical---
+  /*public valuePlotBands: any[] = [{
     from: 24,
     to: 24,
     color: '#78d237',
     opacity: 0.2
-}];
+  }];
+  --------------------------*/
 }

@@ -17,7 +17,7 @@ import 'hammerjs';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    ChartsModule 
+    ChartsModule
   ],
   declarations: [
     VisualisationHeaderComponent,

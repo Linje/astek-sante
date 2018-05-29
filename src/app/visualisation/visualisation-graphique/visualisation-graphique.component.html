@@ -23,8 +23,10 @@
       </kendo-chart-series-item>
     </kendo-chart-series>
   </kendo-chart>
-  -->
-  <kendo-chart>
+  
+-->
+
+  <kendo-chart [pannable]="{ lock: 'y' }" [zoomable]="{ mousewheel: { lock: 'y' }, selection: { lock: 'y' } }">
       <kendo-chart-series>
         <kendo-chart-title></kendo-chart-title>
         <kendo-chart-series-item type="column" [data]="donnee"
@@ -39,11 +41,10 @@
       </kendo-chart-value-axis>
 
       <kendo-chart-category-axis>
-        <kendo-chart-category-axis-item [labels]="{ rotation: 'auto' }" [plotBands]="valuePlotBands">
+        <kendo-chart-category-axis-item [labels]="{ rotation: 'auto' }" [maxDivisions]="15"> <!-- [plotBands]="valuePlotBands"> -->
         </kendo-chart-category-axis-item>
       </kendo-chart-category-axis>
   </kendo-chart>
-
 </div>
 
 

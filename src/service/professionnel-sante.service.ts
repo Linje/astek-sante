@@ -40,7 +40,6 @@ export class ProfessionnelSanteService {
     //return LISTPATIENT --> pour le Test;
   }
 
-  
   public getListSymptomeWebApi() : Promise<Symptome[]>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/"+ this.currentId +"/"+ this.currentPatient.getNumberP())

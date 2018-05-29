@@ -7,10 +7,6 @@ import { PageService } from '../service/page.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  
-  
-  title = 'application professionnel de sante';
-
 
   constructor(private pageService : PageService){}
 

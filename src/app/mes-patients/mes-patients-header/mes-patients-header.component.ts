@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
-import { PageService } from '../../../service/page.service';
+
+import { Router } from '@angular/router';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-mes-patients-header',
@@ -11,7 +13,7 @@ export class MesPatientsHeaderComponent implements OnInit {
 
   private page: number;
   
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private pageService: PageService) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
 
   ngOnInit() {
     this.page = 0;
@@ -19,7 +21,7 @@ export class MesPatientsHeaderComponent implements OnInit {
 
   deconnect(){
     if(confirm("Vous êtes sur de vouloir vous deconnecter ?")) {
-      this.pageService.setPage(0);
+      this.router.navigateByUrl("/connexion");
       this.professionnelSanteService.setCurrentId("");
     } 
   }

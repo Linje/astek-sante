@@ -1,26 +1,31 @@
-<br/> &nbsp; &nbsp;
-<button type="button" class="btn btn-outline-danger" style="padding : 5px" (click)="deconnect()">Deconnexion</button>
+<div *ngIf="this.professionnelSanteService.getCurrentId()!='' && this.professionnelSanteService.getCurrentId() != null; else elseBlock">
+    <br/> &nbsp; &nbsp;
+    <button type="button" class="btn btn-outline-danger" style="padding : 5px" (click)="deconnect()">Deconnexion</button>
 
-<div class="container">
+    <div class="container">
 
-    <h1 class="display-3">
-        SymptoMonitoring
-        <small class="text-muted">- Mes Patients</small>
-        <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
-    </h1>
+        <h1 class="display-3">
+            SymptoMonitoring
+            <small class="text-muted">- Mes Patients</small>
+            <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
+        </h1>
 
-    <br/><br/><br/>
+        <br/><br/><br/>
 
-    <div [ngSwitch]="page">
-        <p *ngSwitchCase="0">
-            <app-mes-patients-liste></app-mes-patients-liste>
-            <button type="button" class="btn btn-outline-secondary" (click)="ajoutPatient()">+ Ajouter un patient</button>
-        </p>
-        <p *ngSwitchCase="1">
-            <app-mes-patients-ajout (pageEvent)="pageEvent($event)"> </app-mes-patients-ajout>
-        </p>
-        <p *ngSwitchDefault>  
-        </p>
+        <div [ngSwitch]="page">
+            <p *ngSwitchCase="0">
+                <app-mes-patients-liste></app-mes-patients-liste>
+                <button type="button" class="btn btn-outline-secondary" (click)="ajoutPatient()">+ Ajouter un patient</button>
+            </p>
+            <p *ngSwitchCase="1">
+                <app-mes-patients-ajout (pageEvent)="pageEvent($event)"> </app-mes-patients-ajout>
+            </p>
+            <p *ngSwitchDefault>  
+            </p>
+        </div>
     </div>
-</div>
 
+</div>
+<ng-template #elseBlock>
+    Connectez-vous avant de pouvoir accéder à l'application
+</ng-template>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PageService } from '../service/page.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,6 @@ import { PageService } from '../service/page.service';
 })
 export class AppComponent{
 
-  constructor(private pageService : PageService){}
+  constructor(){}
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import { PageService } from '../../service/page.service';
 import { ConnexionService } from '../../service/connexion.service';
 import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -13,7 +14,7 @@ export class ConnexionComponent implements OnInit {
   private identifiant : string;
   private password : string;
 
-  constructor(private connexionService : ConnexionService, private professionnelSanteService: ProfessionnelSanteService, private pageService:PageService) { }
+  constructor(private connexionService : ConnexionService, private professionnelSanteService: ProfessionnelSanteService, private router: Router) { }
 
   ngOnInit() {}
 
@@ -26,8 +27,8 @@ export class ConnexionComponent implements OnInit {
         {
            this.professionnelSanteService.setListPatient(data);
         });
-        
-        this.pageService.setPage(1);
+        this.router.navigateByUrl('/mesPatients');
+        //this.pageService.setPage(1);
       }
       else{
         alert("identifiant ou mot de passe incorrect");

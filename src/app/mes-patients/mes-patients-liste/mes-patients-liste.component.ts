@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
 import { Patient } from '../../../model/patient';
-import { PageService } from '../../../service/page.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mes-patients-liste',
@@ -10,7 +11,7 @@ import { PageService } from '../../../service/page.service';
 })
 export class MesPatientsListeComponent implements OnInit{
  
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private pageService : PageService) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
 
   ngOnInit() {}
 
@@ -24,12 +25,12 @@ export class MesPatientsListeComponent implements OnInit{
         for(let s of this.professionnelSanteService.getCurrentPatient().getListSymptome()){
           this.professionnelSanteService.getListValeurWebApi(s.getNumberS()).then((v)=>{
               s.setListValeur(v); 
-              if(this.pageService.getPage() != 2) this.pageService.setPage(2); 
+              //if(this.pageService.getPage() != 2) this.pageService.setPage(2); 
           });
         }
-        
       }
-      else this.pageService.setPage(2);
+      //else this.pageService.setPage(2);
+      this.router.navigateByUrl('mesPatients/visualisation');
     });
     
   }

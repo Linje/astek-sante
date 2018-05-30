@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../service/professionnel-sante.service';
 import { Patient } from '../../model/patient';
-import { PageService } from '../../service/page.service';
 import { Symptome } from '../../model/symptome';
 import { Valeur } from '../../model/valeur';
 import { ConnexionService } from '../../service/connexion.service';
@@ -14,7 +13,7 @@ import { ConnexionService } from '../../service/connexion.service';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private pageService:PageService, 
+  constructor(
     private professionnelSanteService : ProfessionnelSanteService,
     private connexionService : ConnexionService) { }
 
@@ -52,7 +51,7 @@ export class TestComponent implements OnInit {
 
   pageTest(){
     //test de page
-    this.pageService.setPage(0);
+    //this.pageService.setPage(0);
   }
 
 }

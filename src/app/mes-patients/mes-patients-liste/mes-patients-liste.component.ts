@@ -3,6 +3,7 @@ import { ProfessionnelSanteService } from '../../../service/professionnel-sante.
 import { Patient } from '../../../model/patient';
 
 import { Router } from '@angular/router';
+import { VisualisationGraphiqueComponent } from '../../visualisation/visualisation-graphique/visualisation-graphique.component';
 
 @Component({
   selector: 'app-mes-patients-liste',
@@ -19,19 +20,18 @@ export class MesPatientsListeComponent implements OnInit{
     this.professionnelSanteService.setCurrentPatient(p);
     this.professionnelSanteService.getListSymptomeWebApi().then((s)=>{
       this.professionnelSanteService.getCurrentPatient().setListSymptome(s);
-      //pour chaque symptome, charger ses valeurs
-      //bricolage pour le setPage dans la boucle for --> permet au graphique de s'affiche directement
       if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length != 0){
         for(let s of this.professionnelSanteService.getCurrentPatient().getListSymptome()){
           this.professionnelSanteService.getListValeurWebApi(s.getNumberS()).then((v)=>{
-              s.setListValeur(v); 
-              //if(this.pageService.getPage() != 2) this.pageService.setPage(2); 
+              s.setListValeur(v);
+              if(s.getNumberS() == this.professionnelSanteService.getCurrentPatient()
+              .getListSymptome()[this.professionnelSanteService.getCurrentPatient().getListSymptome().length-1].getNumberS()) this.router.navigateByUrl('mesPatients/visualisation'); 
           });
         }
       }
-      //else this.pageService.setPage(2);
-      this.router.navigateByUrl('mesPatients/visualisation');
+      else this.router.navigateByUrl('mesPatients/visualisation');
+      
     });
-    
-  }
+}
+
 }

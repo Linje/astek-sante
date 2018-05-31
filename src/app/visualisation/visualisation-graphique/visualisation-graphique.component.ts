@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Symptome } from '../../../model/symptome';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
-import { GraphModel } from '../../../model/graphModel';
+import { Valeur } from '../../../model/valeur';
 
 @Component({
   selector: 'app-visualisation-graphique',
@@ -11,10 +11,7 @@ import { GraphModel } from '../../../model/graphModel';
 export class VisualisationGraphiqueComponent implements OnInit, OnChanges {
   @Input() symptome: Symptome;
 
-private abscisse : Array<Date> = new Array();
-private ordonnee : any[];//Array<number> = new Array();
-
-private donnee : Array<GraphModel> = new Array();
+private donnee : Array<Valeur> = new Array();
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
@@ -29,11 +26,7 @@ private donnee : Array<GraphModel> = new Array();
   }
 
   initialiserGraph(){
-    this.donnee = [];
-   
-    for(let v of this.symptome.getListValeur()){
-      this.donnee.push(new GraphModel(v.getDate(), v.getIntensite()));
-    }
+    this.donnee = this.symptome.getListValeur();
   }
 
   //---afficher une bare vertical---

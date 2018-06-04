@@ -10,46 +10,20 @@ import { Patient } from '../../../model/patient';
 export class MesPatientsAjoutComponent implements OnInit {
  
   @Output() pageEvent = new EventEmitter<boolean>();
-  private alarme : string;
-  private alarmeButton : string;
-  private classAlarmeButton : string;
+  private alarm:number;
  
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
   ngOnInit() {
-    this.alarme = "Activé";
-    this.alarmeButton = "Désactivé"; 
-    this.classAlarmeButton = "btn btn-outline-danger btn-sm";
+    this.alarm = 1;
   }
-
-  changerAlarme(){
-    switch(this.alarme) { 
-      case "Activé": { 
-        this.alarme = "Désactivé";
-        this.alarmeButton = "Activé";
-        this.classAlarmeButton = "btn btn-outline-success btn-sm";
-        break; 
-      } 
-      case "Désactivé": { 
-        this.alarme = "Activé";
-        this.alarmeButton = "Désactivé"; 
-        this.classAlarmeButton = "btn btn-outline-danger btn-sm"; 
-        break; 
-      }  
-      default: { 
-         console.log("Invalid choice"); 
-         break;              
-      } 
-   }  
-  } 
 
 
   ajouterUnPatient(nom : string, prenom : string, dateDeNaissance : string){
     //mettre un if de controles pour la date
-
     let nbr : number = this.professionnelSanteService.getListPatient().length + 1;
     let alarmeActive : boolean;
-    if(this.alarme == "Activé") alarmeActive = true;
+    if(this.alarm == 1) alarmeActive = true;
     else alarmeActive = false;
     let p : Patient = new Patient(nbr, nom, prenom, dateDeNaissance, alarmeActive, []);
     

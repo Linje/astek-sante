@@ -23,9 +23,12 @@ export class MesPatientsListeComponent implements OnInit{
       if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length != 0){
         for(let s of this.professionnelSanteService.getCurrentPatient().getListSymptome()){
           this.professionnelSanteService.getListValeurWebApi(s.getNumberS()).then((v)=>{
-              s.setListValeur(v);
-              if(s.getNumberS() == this.professionnelSanteService.getCurrentPatient()
-              .getListSymptome()[this.professionnelSanteService.getCurrentPatient().getListSymptome().length-1].getNumberS()) this.router.navigateByUrl('mesPatients/visualisation'); 
+              s.setListValeur(v).then(()=>{
+                if(s.getNumberS() == this.professionnelSanteService.getCurrentPatient()
+                .getListSymptome()[this.professionnelSanteService.getCurrentPatient().getListSymptome().length-1].getNumberS()){
+                  this.router.navigateByUrl('mesPatients/visualisation'); 
+                }
+            });
           });
         }
       }

@@ -20,13 +20,9 @@ private donnee : Array<Valeur> = new Array();
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['symptome']){
       if(this.symptome != undefined){
-        this.initialiserGraph();
+        this.donnee = this.symptome.getListValeur();
       }
     }
-  }
-
-  initialiserGraph(){
-    this.donnee = this.symptome.getListValeur();
   }
 
   //---afficher une bare vertical---

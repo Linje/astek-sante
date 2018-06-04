@@ -20,10 +20,16 @@
 
   <br/>
 
-  Bouton d'Alarme :&nbsp;&nbsp; {{alarme}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button type="button" class={{classAlarmeButton}} (click)="changerAlarme()">{{alarmeButton}}</button>
+  Bouton d'Alarme :
+  <div class="form-group">
+    <select class="custom-select" [(ngModel)]="alarm">
+      <option value="1">Activé</option>
+      <option value="2">Désactivé</option>
+    </select>
+  </div>
 
   <br/><br/><br/>
-
-  <button type="button" class="btn btn-success" (click)="ajouterUnPatient(nom.value, prenom.value, dateDeNaissance.value)">Ajouter</button>
-  <button type="button" class="btn btn-danger" (click)="annuler()">Annuler</button>
+  <div class="text-center">
+    <button type="button" class="btn btn-success" (click)="ajouterUnPatient(nom.value, prenom.value, dateDeNaissance.value)">Ajouter</button>
+    &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-danger" (click)="annuler()">Annuler</button>
+  </div>

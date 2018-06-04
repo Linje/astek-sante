@@ -35,7 +35,7 @@ export class VisualisationHeaderComponent implements OnInit {
     this.professionnelSanteService.setCurrentPatient(null);
   }
 
-  Deconnexion(){
+  deconnect(){
       if(confirm("Vous êtes sur de vouloir vous deconnecter ?")) {
         this.router.navigateByUrl('connexion');
         this.professionnelSanteService.setCurrentId("");

@@ -1,27 +1,38 @@
-<div class="container">
-    <h1 class="display-3">
+<nav class="navbar navbar-light bg-light">
+    Boutton home
+  
+    
+    <h1>
         AppName
         <small class="text-muted">- Connexion</small> 
     </h1>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/fr/5/50/Logo_astek.png" alt="logo d'astek" style="width: 70px;"/>  
+</nav>
+
+<div class="container">
 
     <br/><br/><br/>
 
     <div class="jumbotron">
 
-      <div class="form-group">
+      <div class="form-group text-center">
           <label class="col-form-label" for="inputDefault">IDENTIFIANT</label>
-          <input class="form-control" placeholder="tapez votre identifiant ici" id="identifiant" type="text" #identifiant>
+          <br/><br/>
+          <input class="form-control text-center" placeholder="tapez votre identifiant ici" id="identifiant" type="text" #identifiant>
       </div>
 
       <br/><br/>
 
-      <div class="form-group">
+      <div class="form-group text-center">
           <label for="exampleInputPassword1">MOT DE PASSE</label>
-          <input class="form-control" id="password" placeholder="tapez votre mot de passe ici" type="password" #password>
+          <br/><br/>
+          <input class="form-control text-center" id="password" placeholder="tapez votre mot de passe ici" type="password" #password>
       </div>
 
       <br/><br/><br/>
-
-      <button type="button" class="btn btn-success" (click)="connexion(identifiant.value, password.value)">Connexion</button>
+      <div class="text-center">
+        <button type="button" class="btn btn-success" (click)="connexion(identifiant.value, password.value)">Connexion</button>
+      </div>
     </div>
 </div>

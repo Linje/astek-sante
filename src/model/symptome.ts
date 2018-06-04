@@ -41,7 +41,10 @@ export class Symptome {
     public setEchelle(echelle: number[]){
         this.echelle = echelle;
     }
-    public setListValeur(listValeur: Valeur[]){
-        this.listValeur = listValeur;
+    public setListValeur(listValeur: Valeur[]) : Promise<void>{
+        return new Promise((resolve) => {
+            this.listValeur = listValeur;
+            resolve(null);
+        });
     }
 }

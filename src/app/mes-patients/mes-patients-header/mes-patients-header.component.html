@@ -1,27 +1,34 @@
 <div *ngIf="this.professionnelSanteService.getCurrentId()!='' && this.professionnelSanteService.getCurrentId() != null; else elseBlock">
-    <br/> &nbsp; &nbsp;
-    <button type="button" class="btn btn-outline-danger" style="padding : 5px" (click)="deconnect()">Deconnexion</button>
 
-    <div class="container">
-
-        <h1 class="display-3">
+    <nav class="navbar navbar-light bg-light">
+        <button type="button" class="btn btn-outline-danger" style="padding : 5px" (click)="deconnect()">Deconnexion</button>
+      
+        
+        <h1>
             AppName
             <small class="text-muted">- Mes Patients</small>
-            <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
+            &nbsp;&nbsp;&nbsp; <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
         </h1>
+        
+        <img src="https://upload.wikimedia.org/wikipedia/fr/5/50/Logo_astek.png" alt="logo d'astek" style="width: 70px;"/>  
+    </nav>
+
+    <div class="container">
 
         <br/><br/><br/>
 
         <div [ngSwitch]="page">
-            <p *ngSwitchCase="0">
+            <div *ngSwitchCase="0">
                 <app-mes-patients-liste></app-mes-patients-liste>
-                <button type="button" class="btn btn-outline-secondary" (click)="ajoutPatient()">+ Ajouter un patient</button>
-            </p>
-            <p *ngSwitchCase="1">
+                <div class="text-center">
+                    <button type="button" class="btn btn-outline-secondary" (click)="ajoutPatient()">+ Ajouter un patient</button>
+                </div>
+            </div>
+            <div *ngSwitchCase="1">
                 <app-mes-patients-ajout (pageEvent)="pageEvent($event)"> </app-mes-patients-ajout>
-            </p>
-            <p *ngSwitchDefault>  
-            </p>
+            </div>
+            <div *ngSwitchDefault>  
+            </div>
         </div>
     </div>
 

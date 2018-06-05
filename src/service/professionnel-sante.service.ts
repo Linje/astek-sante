@@ -95,7 +95,6 @@ export class ProfessionnelSanteService {
     return new Promise((resolve, reject) => {
       this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), options)
         .subscribe(res => {
-            //alert("Données envoyées");
             return resolve(null);
        }, (err) => {
          alert(err);
@@ -115,7 +114,6 @@ export class ProfessionnelSanteService {
     return new Promise((resolve, reject) => {
       this.http.post(urlWebApi + "/" + this.currentId + "/" + this.currentPatient.getNumberP(),JSON.stringify(s), options)
         .subscribe(res => {
-            //alert("Données envoyées");
             return resolve(null);
        }, (err) => {
          alert(err);
@@ -123,6 +121,47 @@ export class ProfessionnelSanteService {
       });
     });
   }
+
+
+//DELETE
+
+public deletePatient(numberP : number) : Promise<void>{
+  //envoie des données au webService
+  let headers = new Headers(
+    {
+      'Content-Type' : 'application/json'
+    });
+  let options = new RequestOptions({ headers: headers });
+
+  return new Promise((resolve, reject) => {
+    this.http.delete(urlWebApi + "/" + numberP, options)
+      .subscribe(res => {
+          return resolve(null);
+     }, (err) => {
+       alert(err);
+      reject(err);
+    });
+  });
+}
+
+public deleteSymptome(numberS : number) : Promise<void>{
+  //envoie des données au webService
+  let headers = new Headers(
+    {
+      'Content-Type' : 'application/json'
+    });
+  let options = new RequestOptions({ headers: headers });
+
+  return new Promise((resolve, reject) => {
+    this.http.delete(urlWebApi + "/symptome/" + numberS, options)
+      .subscribe(res => {
+          return resolve(null);
+     }, (err) => {
+       alert(err);
+      reject(err);
+    });
+  });
+}
 
 
   //get & set

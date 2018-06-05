@@ -15,8 +15,11 @@ export class VisualisationTabSymptomeComponent implements OnInit {
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
   ngOnInit() {
-    this.switch = true;
-    this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
+    if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
+      this.switch = true;
+      this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
+    }
+    else this.switch = false;
   }
 
   afficherSymptome(symptome : Symptome){

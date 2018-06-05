@@ -5,14 +5,18 @@
       <th scope="col">Prenom</th>
       <th scope="col">Date de naissance</th>
       <th scope="col">NumberP</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let patient of professionnelSanteService.getListPatient()" (click)="clickPatient(patient)">
-      <td>{{patient.getNom()}}</td>
-      <td>{{patient.getPrenom()}}</td>
-      <td>{{patient.getDateDeNaissance()}}</td>
-      <td>{{patient.getNumberP()}}</td>
+    <tr *ngFor="let patient of professionnelSanteService.getListPatient()">
+      <td (click)="clickPatient(patient)">{{patient.getNom()}}</td>
+      <td (click)="clickPatient(patient)">{{patient.getPrenom()}}</td>
+      <td (click)="clickPatient(patient)">{{patient.getDateDeNaissance()}}</td>
+      <td (click)="clickPatient(patient)">{{patient.getNumberP()}}</td>
+      <td>
+        <button type="button" class="btn btn-outline-danger btn-sm" (click)="deletePatient(patient)">X</button>
+      </td>
     </tr>
   </tbody>
 </table> 

@@ -35,6 +35,18 @@ export class MesPatientsListeComponent implements OnInit{
       else this.router.navigateByUrl('mesPatients/visualisation');
       
     });
-}
+  }
+
+  deletePatient(p: Patient){
+    if(confirm("Etes vous sur de vouloir supprimer '' " + p.getNom() + " " + p.getPrenom() + " '' de vos patient ?")) {
+      this.professionnelSanteService.deletePatient(p.getNumberP()).then(() => {
+      this.professionnelSanteService.getListPatientWebApi().then(data =>
+        {
+           this.professionnelSanteService.setListPatient(data);
+        });
+      });
+    } 
+    
+  }
 
 }

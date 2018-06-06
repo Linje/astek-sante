@@ -50,8 +50,11 @@ export class Patient {
     public setAlarmActivation(alarmActivation: boolean){
         this.alarmActivation = alarmActivation;
     }
-    public setListSymptome(listSymptom: Symptome[]){
-        this.listSymptome = listSymptom;
+    public setListSymptome(listSymptom: Symptome[]) : Promise<void>{
+        return new Promise((resolve) => {
+            this.listSymptome = listSymptom;
+            return resolve(null);
+        });
     }
 
 }

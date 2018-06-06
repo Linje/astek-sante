@@ -36,4 +36,8 @@ export class ConnexionComponent implements OnInit {
     });
   }
 
+  accueil(){
+    this.router.navigateByUrl('/accueil');
+  }
+
 }

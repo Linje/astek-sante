@@ -3,14 +3,23 @@
     <button type="button" class="btn btn-outline-info" (click)="afficherSymptome(symptome)">{{symptome.getNom()}}</button>
     | 
   </div>
+  <div *ngIf="this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 1">
     <button type="button" class="btn btn-outline-warning" (click)="afficherTousLesSymptomes()">Tous les symptomes</button>
+  </div>
 </div>
 
-<div *ngIf = "switch; else elseBlock">
-  <app-visualisation-graphique [symptome]="symptomeSelectionne"></app-visualisation-graphique>
-  <br>
-  <app-visualisation-symptome [symptome]="symptomeSelectionne"></app-visualisation-symptome>
-</div>
-<ng-template #elseBlock>
+<div [ngSwitch]="switch">
+  <div *ngSwitchCase="1">
+    <app-visualisation-graphique [symptome]="symptomeSelectionne"></app-visualisation-graphique>
+    <br>
+    <app-visualisation-symptome [symptome]="symptomeSelectionne" (deleteEvent)="deleteEvent($event)"></app-visualisation-symptome>
+  </div>
+  <div *ngSwitchCase="2">
     <app-visualisation-graphique-tous-les-symptomes></app-visualisation-graphique-tous-les-symptomes>
-</ng-template>
+  </div>
+  <div *ngSwitchCase="3">
+    ...
+  </div>
+  <div *ngSwitchDefault>  
+  </div>
+</div>

@@ -122,6 +122,25 @@ export class ProfessionnelSanteService {
     });
   }
 
+  public addValeur(v : Valeur, numberS : number) : Promise<void>{
+    //envoie des données au webService
+    let headers = new Headers(
+      {
+        'Content-Type' : 'application/json'
+      });
+    let options = new RequestOptions({ headers: headers });
+
+    return new Promise((resolve, reject) => {
+      this.http.post(urlWebApi + "/valeur/" + numberS, JSON.stringify(v), options)
+        .subscribe(res => {
+            return resolve(null);
+       }, (err) => {
+         alert(err);
+        reject(err);
+      });
+    });
+  }
+
 
 //DELETE
 

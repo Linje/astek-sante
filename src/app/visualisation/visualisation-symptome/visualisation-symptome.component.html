@@ -3,8 +3,21 @@
   <br/><br/>
   <h4>Echelle : </h4>
   {{symptome.getEchelle()}}
+  <br/><br/>
+  <h5>Ajouter une valeur en consultation : </h5>
+  <div class="row">
+      &nbsp;&nbsp;&nbsp;
+      <div class="form-group">
+          <input class="form-control" placeholder="noter l'intensité ici" id="intensite" type="number" [(ngModel)]="intensite">
+      </div>
+      &nbsp;&nbsp;
+      <div class="form-group">
+          <button type="button" class="btn btn-success btn-sm" (click)="ajouterValeur()">Ajouter</button>
+      </div>
+  </div>
   <br/><br/><br/><br/>
   <div class="text-center">
+      <button type="button" class="btn btn-outline-secondary btn-sm" (click)="parametreSymptome()">Parametre du symptome</button>
       <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSymptome(symptome)">Supprimer le symptome</button>
   </div>
   <br/><br/><br/>

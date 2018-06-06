@@ -9,7 +9,6 @@ import { ConnexionService } from '../service/connexion.service';
 
 import { AppComponent } from './app.component';
 
-import { TestComponent } from './test/test.component';
 import { ConnexionModule } from './connexion/connexion.module';
 import { MesPatientsModule } from './mes-patients/mes-patients.module';
 import { VisualisationModule } from './visualisation/visualisation.module';
@@ -20,14 +19,15 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { MesPatientsHeaderComponent } from './mes-patients/mes-patients-header/mes-patients-header.component';
 import { VisualisationHeaderComponent } from './visualisation/visualisation-header/visualisation-header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AccueilComponent } from './accueil/accueil.component';
 //-------
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AccueilComponent
   ],
   imports: [
     HttpModule,
@@ -38,10 +38,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     VisualisationModule,
     //Routes
     RouterModule.forRoot([
+      { path: 'accueil', component : AccueilComponent} ,
       { path: 'connexion', component : ConnexionComponent } ,
       { path: 'mesPatients', component : MesPatientsHeaderComponent } ,
       { path: 'mesPatients/visualisation', component : VisualisationHeaderComponent} ,
-      { path: '',   redirectTo: '/connexion', pathMatch: 'full'} ,
+      { path: '',   redirectTo: '/accueil', pathMatch: 'full'} ,
       { path: '**', component: PageNotFoundComponent } ,
 
     ])

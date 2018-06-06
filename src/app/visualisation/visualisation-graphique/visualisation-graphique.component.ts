@@ -18,11 +18,11 @@ private donnee : Array<Valeur> = new Array();
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['symptome']){
-      if(this.symptome != undefined){
+    this.professionnelSanteService.getListValeurWebApi(this.symptome.getNumberS()).then((v)=>{
+      this.symptome.setListValeur(v).then(()=>{
         this.donnee = this.symptome.getListValeur();
-      }
-    }
+      });
+    });   
   }
 
   //---afficher une bare vertical---

@@ -37,7 +37,7 @@
 
       <kendo-chart-value-axis>
           <kendo-chart-value-axis-item [title]="{ text: 'Intensite' }"
-                                       [min]="symptome.getEchelle()[0]" [max]="symptome.getEchelle()[1]">
+                                       [min]="symptome.getEchelle()[0] - 1" [max]="symptome.getEchelle()[1] + 1">
           </kendo-chart-value-axis-item>
       </kendo-chart-value-axis>
 

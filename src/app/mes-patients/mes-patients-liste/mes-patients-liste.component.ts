@@ -19,7 +19,7 @@ export class MesPatientsListeComponent implements OnInit{
   clickPatient(p: Patient){
     this.professionnelSanteService.setCurrentPatient(p);
     this.professionnelSanteService.getListSymptomeWebApi().then((s)=>{
-      this.professionnelSanteService.getCurrentPatient().setListSymptome(s);
+      this.professionnelSanteService.getCurrentPatient().setListSymptome(s).then(()=>{
       if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length != 0){
         for(let s of this.professionnelSanteService.getCurrentPatient().getListSymptome()){
           this.professionnelSanteService.getListValeurWebApi(s.getNumberS()).then((v)=>{
@@ -28,13 +28,15 @@ export class MesPatientsListeComponent implements OnInit{
                 .getListSymptome()[this.professionnelSanteService.getCurrentPatient().getListSymptome().length-1].getNumberS()){
                   this.router.navigateByUrl('mesPatients/visualisation'); 
                 }
+              
             });
           });
         }
       }
       else this.router.navigateByUrl('mesPatients/visualisation');
-      
     });
+      
+   });
   }
 
   deletePatient(p: Patient){

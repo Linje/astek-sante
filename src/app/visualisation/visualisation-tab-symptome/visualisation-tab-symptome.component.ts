@@ -10,25 +10,32 @@ import { Symptome } from '../../../model/symptome';
 export class VisualisationTabSymptomeComponent implements OnInit {
 
   private symptomeSelectionne : Symptome;
-  private switch : boolean;
+  private switch : number;
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
   ngOnInit() {
     if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
-      this.switch = true;
+      this.switch = 1;
       this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
     }
-    else this.switch = false;
+    else this.switch = 3;
   }
 
   afficherSymptome(symptome : Symptome){
     this.symptomeSelectionne = symptome;
-    this.switch = true;
+    this.switch = 1;
   }
 
   afficherTousLesSymptomes(){
-    this.switch = false;
+    this.switch = 2;
   }
 
+  deleteEvent(d: boolean){
+    if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
+      this.switch = 1;
+      this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
+    }
+    else this.switch = 3;
+  }
 }

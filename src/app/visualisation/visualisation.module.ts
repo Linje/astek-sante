@@ -12,12 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import 'hammerjs';
 
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    FormsModule
   ],
   declarations: [
     VisualisationHeaderComponent,

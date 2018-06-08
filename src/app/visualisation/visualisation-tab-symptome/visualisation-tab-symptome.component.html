@@ -10,7 +10,7 @@
 
 <div [ngSwitch]="switch">
   <div *ngSwitchCase="1">
-    <app-visualisation-graphique [symptome]="symptomeSelectionne"></app-visualisation-graphique>
+    <!--<app-visualisation-graphique [symptome]="symptomeSelectionne"></app-visualisation-graphique>-->
     <br>
     <app-visualisation-symptome [symptome]="symptomeSelectionne" (deleteEvent)="deleteEvent($event)"></app-visualisation-symptome>
   </div>

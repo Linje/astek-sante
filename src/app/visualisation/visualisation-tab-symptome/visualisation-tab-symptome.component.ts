@@ -7,24 +7,19 @@ import { Symptome } from '../../../model/symptome';
   templateUrl: './visualisation-tab-symptome.component.html',
   styleUrls: ['./visualisation-tab-symptome.component.css']
 })
-export class VisualisationTabSymptomeComponent implements OnInit {
-
+export class VisualisationTabSymptomeComponent implements OnInit{
   private symptomeSelectionne : Symptome;
   private switch : number;
 
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 
   ngOnInit() {
-    if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
-      this.switch = 1;
-      this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
-    }
-    else this.switch = 3;
+    this.loadData();
   }
 
   afficherSymptome(symptome : Symptome){
     this.symptomeSelectionne = symptome;
-    this.switch = 1;
+    if(this.switch !=1) this.switch = 1;
   }
 
   afficherTousLesSymptomes(){
@@ -32,10 +27,21 @@ export class VisualisationTabSymptomeComponent implements OnInit {
   }
 
   deleteEvent(d: boolean){
-    if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
-      this.switch = 1;
-      this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
+    if(d) this.loadData();
+    else{
+      this.professionnelSanteService.getListValeurWebApi(this.symptomeSelectionne.getNumberS()).then((v)=>{
+        this.symptomeSelectionne.setListValeur(v);
+      });
     }
-    else this.switch = 3;
+  }
+
+  loadData(){
+    this.professionnelSanteService.getSymptomeAndValeurWebApi().then(()=>{
+      if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
+        this.switch = 1;
+        this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
+      }
+      else this.switch = 3;
+    });
   }
 }

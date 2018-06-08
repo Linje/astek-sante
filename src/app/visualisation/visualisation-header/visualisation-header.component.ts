@@ -27,7 +27,7 @@ export class VisualisationHeaderComponent implements OnInit {
   }
 
   parametrePatient(){
-    alert("Fonctionnalite non disponible pour le moment");
+    alert("Fonctionnalité non disponible pour le moment");
   }
 
   retourMesPatients(){

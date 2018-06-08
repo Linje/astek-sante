@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Patient } from '../model/patient';
-//import { LISTPATIENT } from '../mock/mockListPatient';
+
 import { Symptome } from '../model/symptome';
 import { urlWebApi } from '../constante/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Valeur } from '../model/valeur';
+import { resolve } from 'path';
 
 @Injectable()
 export class ProfessionnelSanteService {
@@ -36,8 +37,6 @@ export class ProfessionnelSanteService {
              reject(err);
          });
       });
-    
-    //return LISTPATIENT --> pour le Test;
   }
 
   public getListSymptomeWebApi() : Promise<Symptome[]>{
@@ -79,12 +78,31 @@ export class ProfessionnelSanteService {
          });
       });
   }
+
+  public getSymptomeAndValeurWebApi() : Promise<void>{
+    return new Promise((resolve)=>{
+      this.getListSymptomeWebApi().then((s)=>{
+        this.currentPatient.setListSymptome(s).then(()=>{
+          if(this.currentPatient.getListSymptome().length != 0){
+            for(let s of this.currentPatient.getListSymptome()){
+              this.getListValeurWebApi(s.getNumberS()).then((v)=>{
+                  s.setListValeur(v).then(()=>{
+                    if(s.getNumberS() == this.currentPatient.getListSymptome()[this.currentPatient.getListSymptome().length-1].getNumberS()){
+                      resolve(null);
+                    }
+                  });
+              });
+            }
+          }
+          else resolve(null);
+        });
+      });
+    });
+  }
   
 //Post
 
   public addPatient(p : Patient) : Promise<void>{
-    //this.currentId = "pf2_id"; // JUSTE POUR LE TEST
-
     //envoie des données au webService
     let headers = new Headers(
       {

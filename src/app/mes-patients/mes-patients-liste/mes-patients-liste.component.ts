@@ -3,7 +3,6 @@ import { ProfessionnelSanteService } from '../../../service/professionnel-sante.
 import { Patient } from '../../../model/patient';
 
 import { Router } from '@angular/router';
-import { VisualisationGraphiqueComponent } from '../../visualisation/visualisation-graphique/visualisation-graphique.component';
 
 @Component({
   selector: 'app-mes-patients-liste',

@@ -6,28 +6,52 @@
         <small class="text-muted">- Accueil</small> 
     </h1>
     
-    <img src="https://upload.wikimedia.org/wikipedia/fr/5/50/Logo_astek.png" alt="logo d'astek" style="width: 70px;"/>  
+    <button type="button" class="btn btn-outline-secondary" (click)="connexion()">Connexion</button>
 </nav>
 
 <div class="container">
 
   <br/><br/>
-
-  <div class="text-center">
-    <h3>Description de l'application</h3>
-  </div>
-  .................................................
-  <br/>
-  .................................................
-
-  <br/><br/>
   
+  <h6>Sujet :</h6>
+  <p>
+    Développement d’un objet connecté très simple d’utilisation, permettant au patient de transmettre au
+    personnel de santé une information instantanée correspondant à différents symptômes préalablement
+    sélectionnés et modifiables à la demande.
+  </p>
+
+  <p>
+    J'ai décidé de réaliser un dispositif connecté utilisant la technologie SigFox, qui communique directement 
+    avec le cloud SigFox (https://backend.sigfox.com/). J'ai également développé une API web REST qui lie l'application
+    web à la base de données et au cloud SigFox.
+  </p>
+
   <div class="text-center">
-    Connectez-vous pour utiliser les services de appName :
-    <button type="button" class="btn btn-outline-secondary" (click)="connexion()">Connexion</button>
+    <img src="assets/images/Schéma1.jpg"  alt="schema1" style="width: 700px;"/>
   </div>
 
-  <br/><br/>
+  <br/>
+  <p>
+  <img src="https://blog.groupeastek.com/wp-content/uploads/2015/07/astek-innovation-lab-developpement.jpg"  class="mon_image" alt="image1" style="width: 120px;"/>  
+    
+    L'objectif de cette application est de paramétrer le dispositif de renseignement de symptôme, 
+    puis de pouvoir visualiser les données à l'aide de graphiques. A l'aide de cette application,
+    le professionnel de santé peut également ajouter/supprimer des patients et des symptômes à suivre.
+  </p>
+
+  <br/><br/><br/>
+
+  <div class="text-center">
+    Compte test : <br/>
+    identifiant = pf1_id  <br/>
+    mot de passe = pf1_psw
+  </div>
+
+  <br/><br/><br/>
+
+  <div class="text-center">
+    <img src="http://www.djantoli.org/wp-content/uploads/2010/09/astek.jpg" alt="logo d'astek" style="width: 100px;"/>
+  </div>  
 
 </div>
 

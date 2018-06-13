@@ -6,7 +6,6 @@ import { urlWebApi } from '../constante/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Valeur } from '../model/valeur';
-import { resolve } from 'path';
 
 @Injectable()
 export class ProfessionnelSanteService {
@@ -27,7 +26,7 @@ export class ProfessionnelSanteService {
           let res = data.json();
           let i = 0;
           while(res[i] != undefined){
-            let patient = new Patient(res[i]["numberP"], res[i]["nom"], res[i]["prenom"],res[i]["dateDeNaissance"],res[i]["alarmActivation"],[]);
+            let patient = new Patient(res[i]["numberP"], res[i]["nom"], res[i]["prenom"],res[i]["dateDeNaissance"],res[i]["alarmActivation"],res[i]["idDispositif"],[]);
             list.push(patient);
             i = i + 1;
           }
@@ -102,16 +101,17 @@ export class ProfessionnelSanteService {
   
 //Post
 
+private headers = new Headers(
+  {
+    'Content-Type' : 'application/json'
+  });
+private options = new RequestOptions({ headers: this.headers });
+
   public addPatient(p : Patient) : Promise<void>{
     //envoie des données au webService
-    let headers = new Headers(
-      {
-        'Content-Type' : 'application/json'
-      });
-    let options = new RequestOptions({ headers: headers });
 
     return new Promise((resolve, reject) => {
-      this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), options)
+      this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), this.options)
         .subscribe(res => {
             return resolve(null);
        }, (err) => {
@@ -123,14 +123,9 @@ export class ProfessionnelSanteService {
 
   public addSymptome(s : Symptome) : Promise<void>{
     //envoie des données au webService
-    let headers = new Headers(
-      {
-        'Content-Type' : 'application/json'
-      });
-    let options = new RequestOptions({ headers: headers });
 
     return new Promise((resolve, reject) => {
-      this.http.post(urlWebApi + "/" + this.currentId + "/" + this.currentPatient.getNumberP(),JSON.stringify(s), options)
+      this.http.post(urlWebApi + "/" + this.currentId + "/" + this.currentPatient.getNumberP(),JSON.stringify(s), this.options)
         .subscribe(res => {
             return resolve(null);
        }, (err) => {
@@ -141,15 +136,9 @@ export class ProfessionnelSanteService {
   }
 
   public addValeur(v : Valeur, numberS : number) : Promise<void>{
-    //envoie des données au webService
-    let headers = new Headers(
-      {
-        'Content-Type' : 'application/json'
-      });
-    let options = new RequestOptions({ headers: headers });
 
     return new Promise((resolve, reject) => {
-      this.http.post(urlWebApi + "/valeur/" + numberS, JSON.stringify(v), options)
+      this.http.post(urlWebApi + "/valeur/" + numberS, JSON.stringify(v), this.options)
         .subscribe(res => {
             return resolve(null);
        }, (err) => {
@@ -164,14 +153,9 @@ export class ProfessionnelSanteService {
 
 public deletePatient(numberP : number) : Promise<void>{
   //envoie des données au webService
-  let headers = new Headers(
-    {
-      'Content-Type' : 'application/json'
-    });
-  let options = new RequestOptions({ headers: headers });
 
   return new Promise((resolve, reject) => {
-    this.http.delete(urlWebApi + "/" + numberP, options)
+    this.http.delete(urlWebApi + "/" + numberP, this.options)
       .subscribe(res => {
           return resolve(null);
      }, (err) => {
@@ -183,14 +167,9 @@ public deletePatient(numberP : number) : Promise<void>{
 
 public deleteSymptome(numberS : number) : Promise<void>{
   //envoie des données au webService
-  let headers = new Headers(
-    {
-      'Content-Type' : 'application/json'
-    });
-  let options = new RequestOptions({ headers: headers });
 
   return new Promise((resolve, reject) => {
-    this.http.delete(urlWebApi + "/symptome/" + numberS, options)
+    this.http.delete(urlWebApi + "/symptome/" + numberS, this.options)
       .subscribe(res => {
           return resolve(null);
      }, (err) => {

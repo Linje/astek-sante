@@ -19,13 +19,13 @@ export class MesPatientsAjoutComponent implements OnInit {
   }
 
 
-  ajouterUnPatient(nom : string, prenom : string, dateDeNaissance : string){
+  ajouterUnPatient(nom : string, prenom : string, dateDeNaissance : string, idDispositif : string){
     //mettre un if de controles pour la date
     let nbr : number = this.professionnelSanteService.getListPatient().length + 1;
     let alarmeActive : boolean;
     if(this.alarm == 1) alarmeActive = true;
     else alarmeActive = false;
-    let p : Patient = new Patient(nbr, nom, prenom, dateDeNaissance, alarmeActive, []);
+    let p : Patient = new Patient(nbr, nom, prenom, dateDeNaissance, alarmeActive, idDispositif, []);
     
     this.professionnelSanteService.addPatient(p).then(()=>{
       this.professionnelSanteService.getListPatientWebApi().then(data =>

@@ -20,6 +20,13 @@
 
   <br/>
 
+  <div class="form-group">
+    <label class="col-form-label" for="inputDefault">ID du dispositif (ne remplissez pas ce champ si aucun dispositif n'est attribué au patient)</label>
+    <input class="form-control" placeholder="tapez l'id du dispositif ici" id="idDispositif" type="text" #idDispositif>
+  </div>
+
+  <br/>
+
   Bouton d'Alarme :
   <div class="form-group">
     <select class="custom-select" [(ngModel)]="alarm">
@@ -30,6 +37,6 @@
 
   <br/><br/><br/>
   <div class="text-center">
-    <button type="button" class="btn btn-success" (click)="ajouterUnPatient(nom.value, prenom.value, dateDeNaissance.value)">Ajouter</button>
+    <button type="button" class="btn btn-success" (click)="ajouterUnPatient(nom.value, prenom.value, dateDeNaissance.value, idDispositif.value)">Ajouter</button>
     &nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-danger" (click)="annuler()">Annuler</button>
   </div>

@@ -4,7 +4,7 @@
       <th scope="col">Nom</th>
       <th scope="col">Prenom</th>
       <th scope="col">Date de naissance</th>
-      <th scope="col">NumberP</th>
+      <th scope="col">id Dispositif</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -13,7 +13,12 @@
       <td (click)="clickPatient(patient)">{{patient.getNom()}}</td>
       <td (click)="clickPatient(patient)">{{patient.getPrenom()}}</td>
       <td (click)="clickPatient(patient)">{{patient.getDateDeNaissance()}}</td>
-      <td (click)="clickPatient(patient)">{{patient.getNumberP()}}</td>
+      <div *ngIf="patient.getIdDispositif() != null; else elseBlock">
+        <td (click)="clickPatient(patient)">{{patient.getIdDispositif()}}</td>
+      </div>
+      <ng-template #elseBlock>
+        <td (click)="clickPatient(patient)">pas de dispositif</td>
+    </ng-template>
       <td>
         <button type="button" class="btn btn-outline-danger btn-sm" (click)="deletePatient(patient)">X</button>
       </td>

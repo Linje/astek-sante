@@ -7,15 +7,17 @@ export class Patient {
     private prenom : string;
     private dateDeNaissance : string;
     private alarmActivation : boolean;
+    private idDispositif : string;
     private listSymptome : Symptome[];
 
-    constructor(numberP : number, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, listSymptome : Symptome[]){
+    constructor(numberP : number, nom: string, prenom: string, dateDeNaissance : string, alarmActivation : boolean, idDispositif : string, listSymptome : Symptome[]){
         this.numberP = numberP; //numberPatient = nombre de patient total
         this.nom = nom;
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
         this.alarmActivation = alarmActivation;
         this.listSymptome = listSymptome;
+        this.idDispositif = idDispositif;
     }
     // get
     public getNumberP() : number{
@@ -36,6 +38,9 @@ export class Patient {
     public getListSymptome() : Symptome[]{
         return this.listSymptome;
     }
+    public getIdDispositif() : string{
+        return this.idDispositif;
+    }
 
     // set (sauf de numberP)
     public setNom(nom: string){
@@ -49,6 +54,9 @@ export class Patient {
     }
     public setAlarmActivation(alarmActivation: boolean){
         this.alarmActivation = alarmActivation;
+    }
+    public setIdDispositif(idDispositif : string){
+        this.idDispositif = idDispositif;
     }
     public setListSymptome(listSymptom: Symptome[]) : Promise<void>{
         return new Promise((resolve) => {

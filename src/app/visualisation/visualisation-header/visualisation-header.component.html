@@ -9,7 +9,7 @@
         <ul class="nav nav-pills flex-column">
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="http://afcmd.com/assets/img/site/menu.png" style="width: 70px;"/>
+                <img src="assets/images/menu.png" style="width: 70px;"/>
             </a>
             <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
                 <button class="dropdown-item" (click)="nouveauSymptome()">+ Nouveau symptome</button>
@@ -46,6 +46,9 @@
                 </p>
                 <p *ngSwitchCase="1">
                     <app-visualisation-nouveau-symptome (pageEvent)="pageEvent($event)"></app-visualisation-nouveau-symptome>
+                </p>
+                <p *ngSwitchCase="2">
+                    <app-visualisation-parametre-patient (pageEvent)="pageEvent($event)"></app-visualisation-parametre-patient>
                 </p>
                 <p *ngSwitchDefault>  
                 </p>

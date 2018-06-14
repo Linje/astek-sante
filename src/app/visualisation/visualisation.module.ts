@@ -6,6 +6,8 @@ import { VisualisationTabSymptomeComponent } from './visualisation-tab-symptome/
 import { VisualisationSymptomeComponent } from './visualisation-symptome/visualisation-symptome.component';
 import { VisualisationGraphiqueTousLesSymptomesComponent } from './visualisation-graphique-tous-les-symptomes/visualisation-graphique-tous-les-symptomes.component';
 import { VisualisationNouveauSymptomeComponent } from './visualisation-nouveau-symptome/visualisation-nouveau-symptome.component';
+import { VisualisationParametrePatientComponent } from './visualisation-parametre-patient/visualisation-parametre-patient.component';
+import { VisualisationParametreSymptomeComponent } from './visualisation-parametre-symptome/visualisation-parametre-symptome.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChartsModule } from '@progress/kendo-angular-charts';
@@ -26,12 +28,16 @@ import { FormsModule } from '@angular/forms';
     VisualisationTabSymptomeComponent,
     VisualisationSymptomeComponent,
     VisualisationGraphiqueTousLesSymptomesComponent,
-    VisualisationNouveauSymptomeComponent],
+    VisualisationNouveauSymptomeComponent,
+    VisualisationParametrePatientComponent,
+    VisualisationParametreSymptomeComponent],
   exports : [
     VisualisationHeaderComponent,
     VisualisationTabSymptomeComponent,
     VisualisationSymptomeComponent,
     VisualisationGraphiqueTousLesSymptomesComponent,
-    VisualisationNouveauSymptomeComponent]
+    VisualisationNouveauSymptomeComponent,
+    VisualisationParametrePatientComponent,
+    VisualisationParametreSymptomeComponent]
 })
 export class VisualisationModule { }

@@ -25,6 +25,7 @@ export class MesPatientsAjoutComponent implements OnInit {
     let alarmeActive : boolean;
     if(this.alarm == 1) alarmeActive = true;
     else alarmeActive = false;
+    if(idDispositif == "") idDispositif = null;
     let p : Patient = new Patient(nbr, nom, prenom, dateDeNaissance, alarmeActive, idDispositif, []);
     
     this.professionnelSanteService.addPatient(p).then(()=>{

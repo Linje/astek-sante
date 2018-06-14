@@ -20,6 +20,7 @@ import { MesPatientsHeaderComponent } from './mes-patients/mes-patients-header/m
 import { VisualisationHeaderComponent } from './visualisation/visualisation-header/visualisation-header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccueilComponent } from './accueil/accueil.component';
+
 //-------
 
 

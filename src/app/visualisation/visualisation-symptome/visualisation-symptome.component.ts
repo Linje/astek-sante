@@ -15,10 +15,15 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges {
   @Output() deleteEvent = new EventEmitter<boolean>();
 
   private intensite : number;
+  
+  private switch : number;
 
   constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.switch = 1;
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.intensite = null;
   }
@@ -43,7 +48,11 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges {
   
   
   parametreSymptome(){
-    alert("fonctionnalité non disponible pour le moment");
+    this.switch=2;
+  }
+
+  pageEvent(d:boolean){
+    this.switch=1;
   }
 
 }

@@ -1,71 +1,82 @@
 <div *ngIf="symptome">
-  <br/>
-  <hr class="my-4">
-  <div class="text-center">
-    <h3>{{symptome.getNom()}}</h3>
-  </div>
-  <hr class="my-4">
-  <br/>
-  <h4>Graphique des valeurs :</h4>
+  <div [ngSwitch]="switch">
+    <div *ngSwitchCase="1">
+      <br/>
+    <hr class="my-4">
+    <div class="text-center">
+      <h3>{{symptome.getNom()}}</h3>
+    </div>
+    <hr class="my-4">
+    <br/>
+    <h4>Graphique des valeurs :</h4>
 
-  <!--<kendo-chart [categoryAxis]="{categories: abscisse}" [labels]="{ format: 'd', rotation: 'auto' }">
-    <kendo-chart-title ></kendo-chart-title>
-    <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
-    
-    <kendo-chart-value-axis>
-        <kendo-chart-value-axis-item [title]="{ text: 'Intensite' }"
-                                     [min]="symptome.getEchelle()[0]" [max]="symptome.getEchelle()[1]">
-        </kendo-chart-value-axis-item>
-    </kendo-chart-value-axis>
-    <kendo-chart-series>
-      <!--<kendo-chart-series-item *ngFor="let student of students" type="line" [data]="student.results" [name]="student.name">-->
-     <!-- <kendo-chart-series-item type="line" [data]="ordonnee">
-      </kendo-chart-series-item>
-    </kendo-chart-series>
-  </kendo-chart>
-  
--->
-
-  <kendo-chart [pannable]="{ lock: 'y' }" [zoomable]="{ mousewheel: { lock: 'y' }, selection: { lock: 'y' } }">
-      <kendo-chart-series>
-        <kendo-chart-title></kendo-chart-title>
-        <kendo-chart-series-item type="column" [data]="this.symptome.getListValeur()"
-                                 field="intensite" categoryField="date">
-        </kendo-chart-series-item>
-      </kendo-chart-series>
-
+    <!--<kendo-chart [categoryAxis]="{categories: abscisse}" [labels]="{ format: 'd', rotation: 'auto' }">
+      <kendo-chart-title ></kendo-chart-title>
+      <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
+      
       <kendo-chart-value-axis>
           <kendo-chart-value-axis-item [title]="{ text: 'Intensite' }"
-                                       [min]="symptome.getEchelle()[0] - 1" [max]="symptome.getEchelle()[1] + 1">
+                                      [min]="symptome.getEchelle()[0]" [max]="symptome.getEchelle()[1]">
           </kendo-chart-value-axis-item>
       </kendo-chart-value-axis>
+      <kendo-chart-series>
+        <!--<kendo-chart-series-item *ngFor="let student of students" type="line" [data]="student.results" [name]="student.name">-->
+      <!-- <kendo-chart-series-item type="line" [data]="ordonnee">
+        </kendo-chart-series-item>
+      </kendo-chart-series>
+    </kendo-chart>
+    
+  -->
 
-      <kendo-chart-category-axis>
-        <kendo-chart-category-axis-item [labels]="{ rotation: 'auto' }" [maxDivisions]="15"> <!-- [plotBands]="valuePlotBands"> -->
-        </kendo-chart-category-axis-item>
-      </kendo-chart-category-axis>
-  </kendo-chart>
-  <h4>Description : </h4>{{symptome.getDescription()}}
-  <br/><br/>
-  <h4>Echelle : </h4>
-  {{symptome.getEchelle()}}
-  <br/><br/>
-  <h5>Ajouter une valeur en consultation : </h5>
-  <div class="row">
-      &nbsp;&nbsp;&nbsp;
-      <div class="form-group">
-          <input class="form-control" placeholder="noter l'intensité ici" id="intensite" type="number" [(ngModel)]="intensite">
-      </div>
-      &nbsp;&nbsp;
-      <div class="form-group">
-          <button type="button" class="btn btn-success btn-sm" (click)="ajouterValeur()">Ajouter</button>
-      </div>
+    <kendo-chart [pannable]="{ lock: 'y' }" [zoomable]="{ mousewheel: { lock: 'y' }, selection: { lock: 'y' } }">
+        <kendo-chart-series>
+          <kendo-chart-title></kendo-chart-title>
+          <kendo-chart-series-item type="column" [data]="this.symptome.getListValeur()"
+                                  field="intensite" categoryField="date">
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+
+        <kendo-chart-value-axis>
+            <kendo-chart-value-axis-item [title]="{ text: 'Intensite' }"
+                                        [min]="symptome.getEchelle()[0] - 1" [max]="symptome.getEchelle()[1] + 1">
+            </kendo-chart-value-axis-item>
+        </kendo-chart-value-axis>
+
+        <kendo-chart-category-axis>
+          <kendo-chart-category-axis-item [labels]="{ rotation: 'auto' }" [maxDivisions]="15"> <!-- [plotBands]="valuePlotBands"> -->
+          </kendo-chart-category-axis-item>
+        </kendo-chart-category-axis>
+    </kendo-chart>
+    <h4>Description : </h4>{{symptome.getDescription()}}
+    <br/><br/>
+    <h4>Echelle : </h4>
+    {{symptome.getEchelle()}}
+    <br/><br/>
+    <h5>Ajouter une valeur en consultation : </h5>
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-group">
+            <input class="form-control" placeholder="noter l'intensité ici" id="intensite" type="number" [(ngModel)]="intensite">
+        </div>
+        &nbsp;&nbsp;
+        <div class="form-group">
+            <button type="button" class="btn btn-success btn-sm" (click)="ajouterValeur()">Ajouter</button>
+        </div>
+    </div>
+    <br/><br/><br/><br/>
+    <div class="text-center">
+        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="parametreSymptome()">Parametre du symptome</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSymptome(symptome)">Supprimer le symptome</button>
+    </div>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    </div>
+
+    <div *ngSwitchCase="2">
+      <app-visualisation-parametre-symptome [symptome]="this.symptome" (pageEvent)="pageEvent($event)"></app-visualisation-parametre-symptome>
+    </div>
+    <div *ngSwitchDefault>  
+    </div>
   </div>
-  <br/><br/><br/><br/>
-  <div class="text-center">
-      <button type="button" class="btn btn-outline-secondary btn-sm" (click)="parametreSymptome()">Parametre du symptome</button>
-      <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSymptome(symptome)">Supprimer le symptome</button>
-  </div>
-  <br/><br/><br/>
-  <br/><br/><br/>
+  
 </div>

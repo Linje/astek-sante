@@ -179,6 +179,20 @@ public deleteSymptome(numberS : number) : Promise<void>{
   });
 }
 
+//UPDATE
+
+public updatePatient(p : Patient) : Promise<void>{
+  return new Promise((resolve, reject) => {
+    this.http.put(urlWebApi + "/update/" + this.currentId, JSON.stringify(p), this.options)
+      .subscribe(res => {
+          return resolve(null);
+     }, (err) => {
+       alert(err);
+      reject(err);
+    });
+  });
+}
+
 
   //get & set
   public setCurrentId(id : string) : void{

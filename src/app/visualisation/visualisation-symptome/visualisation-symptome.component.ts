@@ -43,7 +43,7 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges {
       this.intensite = null;
     });
     }
-    else alert("la valeur renseignée n'est pas compris dans l'échelle (" + this.symptome.getEchelle() + ")" );
+    else alert("la valeur renseignée n'est pas comprise dans l'échelle (" + this.symptome.getEchelle() + ")" );
   } 
   
   
@@ -53,6 +53,7 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges {
 
   pageEvent(d:boolean){
     this.switch=1;
+    if(d) this.deleteEvent.emit(true);
   }
 
 }

@@ -193,6 +193,18 @@ public updatePatient(p : Patient) : Promise<void>{
   });
 }
 
+public updateSymptome(s : Symptome) : Promise<void>{
+  return new Promise((resolve, reject) => {
+    this.http.put(urlWebApi + "/update/" + this.currentId + "/" + this.currentPatient.getNumberP(), JSON.stringify(s), this.options)
+      .subscribe(res => {
+          return resolve(null);
+     }, (err) => {
+       alert(err);
+      reject(err);
+    });
+  });
+}
+
 
   //get & set
   public setCurrentId(id : string) : void{

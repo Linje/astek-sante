@@ -10,8 +10,7 @@ export class AccueilComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   connexion(){
     this.router.navigateByUrl("/connexion");

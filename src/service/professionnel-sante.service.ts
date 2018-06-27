@@ -6,6 +6,7 @@ import { urlWebApi } from '../constante/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { Valeur } from '../model/valeur';
+import { Valeur2 } from '../model/valeur2';
 
 @Injectable()
 export class ProfessionnelSanteService {
@@ -66,8 +67,10 @@ export class ProfessionnelSanteService {
           let res = data.json();
           let i = 0;
           while(res[i] != undefined){
-            let valeur = new Valeur(res[i]["intensite"], new Date(res[i]["date"]));
-            list.push(valeur);
+            let v = new Valeur(res[i]["intensite"], new Date(res[i]["date"]));
+            //adapter la date au fuseau horaire (JSON.stringify() ne le prend pas en compte)
+            v.getDate().setHours(v.getDate().getHours() - v.getDate().getTimezoneOffset() / 60);
+            list.push(v);
             i = i + 1;
           }
           return resolve(list);
@@ -99,19 +102,23 @@ export class ProfessionnelSanteService {
     });
   }
   
-//Post
+  //Post
 
-private headers = new Headers(
+  private headers = new Headers(
   {
     'Content-Type' : 'application/json'
   });
-private options = new RequestOptions({ headers: this.headers });
+  private options = new RequestOptions({ headers: this.headers });
 
   public addPatient(p : Patient) : Promise<void>{
     //envoie des données au webService
 
+    //test database :  
+    let url = "https://hello-word-app-astek.herokuapp.com/professional/";
+
+
     return new Promise((resolve, reject) => {
-      this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), this.options)
+      this.http.post(url + "/" + this.currentId,JSON.stringify(p), this.options)
         .subscribe(res => {
             return resolve(null);
        }, (err) => {
@@ -136,7 +143,6 @@ private options = new RequestOptions({ headers: this.headers });
   }
 
   public addValeur(v : Valeur, numberS : number) : Promise<void>{
-
     return new Promise((resolve, reject) => {
       this.http.post(urlWebApi + "/valeur/" + numberS, JSON.stringify(v), this.options)
         .subscribe(res => {
@@ -145,9 +151,24 @@ private options = new RequestOptions({ headers: this.headers });
          alert(err);
         reject(err);
       });
-    });
+    }); 
   }
 
+  //-------test callback------------
+  public addValeur2() : Promise<void>{
+    let time = new Date();
+    let v : Valeur2 = new Valeur2("060a", time.getTime());
+    return new Promise((resolve, reject) => {
+      this.http.post(urlWebApi + "/valeur/dispositif/001D2396", JSON.stringify(v), this.options)
+        .subscribe(res => {
+            return resolve(null);
+       }, (err) => {
+         alert(err);
+        reject(err);
+      });
+    }); 
+  }
+  //-------------------------------
 
 //DELETE
 

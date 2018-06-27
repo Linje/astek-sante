@@ -18,7 +18,7 @@ export class ConnexionComponent implements OnInit {
 
   ngOnInit() {}
 
-  connexion(id : string, psw : string){    
+  connexion(id : string, psw : string){
     this.connexionService.connect(id,psw)
     .then(res => {
       if(res){
@@ -28,7 +28,6 @@ export class ConnexionComponent implements OnInit {
            this.professionnelSanteService.setListPatient(data);
         });
         this.router.navigateByUrl('/mesPatients');
-        //this.pageService.setPage(1);
       }
       else{
         alert("identifiant ou mot de passe incorrect");
@@ -37,6 +36,9 @@ export class ConnexionComponent implements OnInit {
   }
 
   accueil(){
+    //----------
+    //this.professionnelSanteService.addValeur2();
+    //----------
     this.router.navigateByUrl('/accueil');
   }
 

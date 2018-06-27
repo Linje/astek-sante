@@ -8,6 +8,7 @@ export class ConnexionService {
 
   constructor(private http: Http, private professionnelSanteService : ProfessionnelSanteService) { }
 
+  
   public connect(id : string, psw : string): Promise<boolean>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/connection/"+ id + "/" + psw)
@@ -23,7 +24,6 @@ export class ConnexionService {
            alert(err);
              reject(err);
          });
-      });
+      });   
   }
-
 }

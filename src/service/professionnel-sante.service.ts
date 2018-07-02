@@ -15,7 +15,7 @@ export class ProfessionnelSanteService {
   private listPatient: Patient[];
   private currentPatient : Patient;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http){}
 
 // Get
 

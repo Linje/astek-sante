@@ -1,6 +1,6 @@
-<div *ngIf="this.professionnelSanteService.getCurrentId()!='' && this.professionnelSanteService.getCurrentId() != null; else elseBlock">
-    <ng-progress></ng-progress>
-    <nav class="navbar navbar-light bg-light">
+
+<ng-progress></ng-progress>
+<nav class="navbar navbar-light bg-light">
         <button type="button" class="btn btn-outline-danger" style="padding : 5px" (click)="deconnect()">Deconnexion</button>
       
         
@@ -11,9 +11,9 @@
         </h1>
         
         <img src="assets/images/LogoAstek.png" alt="logo d'astek" style="width: 70px;"/>  
-    </nav>
+</nav>
 
-    <div class="container">
+<div class="container">
 
         <br/><br/><br/>
 
@@ -30,9 +30,4 @@
             <div *ngSwitchDefault>  
             </div>
         </div>
-    </div>
-
 </div>
-<ng-template #elseBlock>
-    Connectez-vous avant de pouvoir accéder à l'application
-</ng-template>

@@ -1,6 +1,5 @@
-<div *ngIf="this.professionnelSanteService.getCurrentPatient() != null; else elseBlock">   
-    <ng-progress></ng-progress>
-    <div class="row">
+<ng-progress></ng-progress>
+<div class="row">
         &nbsp; &nbsp; &nbsp;
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -55,8 +54,4 @@
                 </p>
             </div>
         </div>
-    </div>
 </div>
-<ng-template #elseBlock>
-    Connectez-vous avant de pouvoir accéder à l'application
-</ng-template>

@@ -28,7 +28,7 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges, AfterV
   }
 
   ngAfterViewInit(): void {
-    this.progressService.done();
+    //this.progressService.done();
   }
 
   ngAfterViewChecked(): void{
@@ -48,9 +48,11 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges, AfterV
   }
 
   ajouterValeur(){
+    this.progressService.start();
     if(this.intensite >= this.symptome.getEchelle()[0] && this.intensite <= this.symptome.getEchelle()[1]){
       this.professionnelSanteService.addValeur(new Valeur(this.intensite, new Date()),this.symptome.getNumberS()).then(()=>{
       this.deleteEvent.emit(false);
+      this.progressService.done();
       this.intensite = null;
     });
     }

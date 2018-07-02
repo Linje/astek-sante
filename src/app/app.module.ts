@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AccueilComponent } from './accueil/accueil.component';
 //-------
 import { NgProgressModule } from 'ngx-progressbar';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -42,8 +43,8 @@ import { NgProgressModule } from 'ngx-progressbar';
     RouterModule.forRoot([
       { path: 'accueil', component : AccueilComponent} ,
       { path: 'connexion', component : ConnexionComponent } ,
-      { path: 'mesPatients', component : MesPatientsHeaderComponent } ,
-      { path: 'mesPatients/visualisation', component : VisualisationHeaderComponent} ,
+      { path: 'mesPatients', canActivate: [AuthGuard], component : MesPatientsHeaderComponent } ,
+      { path: 'mesPatients/visualisation', canActivate: [AuthGuard], component : VisualisationHeaderComponent} ,
       { path: '',   redirectTo: '/accueil', pathMatch: 'full'} ,
       { path: '**', component: PageNotFoundComponent } ,
 
@@ -52,7 +53,8 @@ import { NgProgressModule } from 'ngx-progressbar';
   ],
   providers: [
     ProfessionnelSanteService,
-    ConnexionService],
+    ConnexionService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
 
 import { Router } from '@angular/router';
+
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-visualisation-header',
@@ -9,12 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./visualisation-header.component.css']
 })
 export class VisualisationHeaderComponent implements OnInit {
-
+  
   private page : number;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
 
   ngOnInit() {
+    this.progressService.start();
+    if(this.professionnelSanteService.getCurrentPatient()==null){
+      this.router.navigateByUrl('/mesPatients');
+    }
     this.page = 0;
   }
 

@@ -1,3 +1,4 @@
+<ng-progress></ng-progress>
 <div *ngIf="symptome">
   <div [ngSwitch]="switch">
     <div *ngSwitchCase="1">
@@ -7,6 +8,13 @@
       <h3>{{symptome.getNom()}}</h3>
     </div>
     <hr class="my-4">
+    <br/>
+    <div class="form-group">
+      <select class="custom-select" [(ngModel)]="typeChart">
+        <option value="column">Colonne</option>
+        <option value="line">Ligne</option>
+      </select>
+    </div>
     <br/>
     <h4>Graphique des valeurs :</h4>
 
@@ -24,14 +32,13 @@
       <!-- <kendo-chart-series-item type="line" [data]="ordonnee">
         </kendo-chart-series-item>
       </kendo-chart-series>
-    </kendo-chart>
-    
-  -->
+    </kendo-chart>  
+    -->
 
     <kendo-chart [pannable]="{ lock: 'y' }" [zoomable]="{ mousewheel: { lock: 'y' }, selection: { lock: 'y' } }">
         <kendo-chart-series>
           <kendo-chart-title></kendo-chart-title>
-          <kendo-chart-series-item type="column" [data]="this.symptome.getListValeur()"
+          <kendo-chart-series-item type="{{typeChart}}" [data]="this.symptome.getListValeur()"
                                   field="intensite" categoryField="date">
           </kendo-chart-series-item>
         </kendo-chart-series>

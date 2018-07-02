@@ -1,27 +1,38 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, AfterViewInit, AfterViewChecked} from '@angular/core';
 import { Symptome } from '../../../model/symptome';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
 import { Router } from '@angular/router';
-import { resolve } from 'url';
 import { Valeur } from '../../../model/valeur';
+
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-visualisation-symptome',
   templateUrl: './visualisation-symptome.component.html',
   styleUrls: ['./visualisation-symptome.component.css']
 })
-export class VisualisationSymptomeComponent implements OnInit, OnChanges {
+export class VisualisationSymptomeComponent implements OnInit, OnChanges, AfterViewInit, AfterViewChecked {
   @Input() symptome: Symptome;
   @Output() deleteEvent = new EventEmitter<boolean>();
 
   private intensite : number;
   
   private switch : number;
+  private typeChart : string;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
 
   ngOnInit() {
     this.switch = 1;
+    this.typeChart = "column";
+  }
+
+  ngAfterViewInit(): void {
+    this.progressService.done();
+  }
+
+  ngAfterViewChecked(): void{
+    this.progressService.done();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

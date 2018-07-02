@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
 import { Symptome } from '../../../model/symptome';
 
+import { NgProgress } from 'ngx-progressbar';
+
 @Component({
   selector: 'app-visualisation-tab-symptome',
   templateUrl: './visualisation-tab-symptome.component.html',
@@ -11,13 +13,14 @@ export class VisualisationTabSymptomeComponent implements OnInit{
   private symptomeSelectionne : Symptome;
   private switch : number;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private progressService : NgProgress) { }
 
   ngOnInit() {
     this.loadData();
   }
 
   afficherSymptome(symptome : Symptome){
+    this.progressService.start();
     this.symptomeSelectionne = symptome;
     if(this.switch !=1) this.switch = 1;
   }

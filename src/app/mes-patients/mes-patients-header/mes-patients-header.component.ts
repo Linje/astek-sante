@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessionnelSanteService } from '../../../service/professionnel-sante.service';
 
 import { Router } from '@angular/router';
-import { isUndefined } from 'util';
+
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-mes-patients-header',
@@ -13,10 +14,15 @@ export class MesPatientsHeaderComponent implements OnInit {
 
   private page: number;
   
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
 
   ngOnInit() {
     this.page = 0;
+    this.professionnelSanteService.getListPatientWebApi().then(data =>
+    {
+        this.professionnelSanteService.setListPatient(data);
+        this.progressService.done();
+    });
   }
 
   deconnect(){

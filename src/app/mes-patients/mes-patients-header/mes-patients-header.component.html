@@ -1,5 +1,5 @@
 <div *ngIf="this.professionnelSanteService.getCurrentId()!='' && this.professionnelSanteService.getCurrentId() != null; else elseBlock">
-
+    <ng-progress></ng-progress>
     <nav class="navbar navbar-light bg-light">
         <button type="button" class="btn btn-outline-danger" style="padding : 5px" (click)="deconnect()">Deconnexion</button>
       

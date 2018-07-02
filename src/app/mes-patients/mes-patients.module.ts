@@ -6,10 +6,13 @@ import { MesPatientsListeComponent } from './mes-patients-liste/mes-patients-lis
 
 import { FormsModule } from '@angular/forms';
 
+import { NgProgressModule } from 'ngx-progressbar';
+
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgProgressModule
   ],
   declarations: [MesPatientsHeaderComponent,
     MesPatientsListeComponent,

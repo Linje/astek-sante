@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ConnexionComponent } from './connexion.component';
 
-// route
+import { NgProgressModule } from 'ngx-progressbar';
 
 
 @NgModule({
-  imports: [],
+  imports: [NgProgressModule],
   declarations: [
   ConnexionComponent],
   exports: [

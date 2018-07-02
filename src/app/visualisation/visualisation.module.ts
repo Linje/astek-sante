@@ -15,13 +15,16 @@ import 'hammerjs';
 
 import { FormsModule } from '@angular/forms';
 
+import { NgProgressModule } from 'ngx-progressbar';
+
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     ChartsModule,
-    FormsModule
+    FormsModule,
+    NgProgressModule
   ],
   declarations: [
     VisualisationHeaderComponent,

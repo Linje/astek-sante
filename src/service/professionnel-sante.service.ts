@@ -159,8 +159,9 @@ export class ProfessionnelSanteService {
     let time = new Date();
     let v : Valeur2 = new Valeur2("060a", time.getTime());
     return new Promise((resolve, reject) => {
-      this.http.post(urlWebApi + "/valeur/dispositif/001D2396", JSON.stringify(v), this.options)
+      this.http.post(urlWebApi + "/valeur/dispositif/1D2396", JSON.stringify(v), this.options)
         .subscribe(res => {
+          alert(res);
             return resolve(null);
        }, (err) => {
          alert(err);

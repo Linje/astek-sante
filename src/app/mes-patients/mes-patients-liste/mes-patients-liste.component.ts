@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MesPatientsListeComponent implements OnInit{
  
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
+  constructor(public professionnelSanteService : ProfessionnelSanteService, private router: Router) { }
 
   ngOnInit() {}
 

@@ -12,9 +12,9 @@ import { NgProgress } from 'ngx-progressbar';
 })
 export class MesPatientsHeaderComponent implements OnInit {
 
-  private page: number;
+  public page: number;
   
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
+  constructor(public professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
 
   ngOnInit() {
     this.page = 0;

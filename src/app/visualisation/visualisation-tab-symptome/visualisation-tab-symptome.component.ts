@@ -11,9 +11,9 @@ import { NgProgress } from 'ngx-progressbar';
 })
 export class VisualisationTabSymptomeComponent implements OnInit{
   private symptomeSelectionne : Symptome;
-  private switch : number;
+  public switch : number;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private progressService : NgProgress) { }
+  constructor(public professionnelSanteService : ProfessionnelSanteService, private progressService : NgProgress) { }
 
   ngOnInit() {
     this.loadData();

@@ -1,57 +1,39 @@
 <ng-progress></ng-progress>
-<div class="row">
-        &nbsp; &nbsp; &nbsp;
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-         
-        <div>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="assets/images/menu.png" style="width: 70px;"/>
-            </a>
-            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
-                <button class="dropdown-item" (click)="nouveauSymptome()">+ Nouveau symptome</button>
-                <div class="dropdown-divider"></div>
-                <button class="dropdown-item" (click)="parametrePatient()" >Parametre du patient</button>
-                <div class="dropdown-divider"></div>
-                <button class="dropdown-item" (click)="retourMesPatients()">Retour à Mes Patients</button>
-                <div class="dropdown-divider"></div>
-                <button class="dropdown-item" (click)="deconnexion()">Deconnexion</button>
-            </div>
-            </li>
-        </ul>
+ <nav class="navbar navbar-light bg-light">
+    <div class="btn-group-vertical" data-toggle="buttons">
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="retourMesPatients()">Retour</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="deconnexion()">Deconnexion</button>
+    </div>
 
-        </div>
-        
-        <div class="container">
-                
-            <div class="text-center">
-                <h1 class="display-2">
-                AppName
-                <small class="text-muted">- Visualisation</small>
-                <br/>
-                <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
-                <FONT size="2">| Patient : {{professionnelSanteService.getCurrentPatient().getNom()}}</FONT>
-                <FONT size="2"> {{professionnelSanteService.getCurrentPatient().getPrenom()}}</FONT>
-                </h1>
-            </div>
-            <hr class="my-4">
-            <br/>
-        
-            <div [ngSwitch]="page">
-                <p *ngSwitchCase="0">
-                    <app-visualisation-tab-symptome></app-visualisation-tab-symptome>
-                </p>
-                <p *ngSwitchCase="1">
-                    <app-visualisation-nouveau-symptome (pageEvent)="pageEvent($event)"></app-visualisation-nouveau-symptome>
-                </p>
-                <p *ngSwitchCase="2">
-                    <app-visualisation-parametre-patient (pageEvent)="pageEvent($event)"></app-visualisation-parametre-patient>
-                </p>
-                <p *ngSwitchDefault>  
-                </p>
-            </div>
-        </div>
+    <h1 (click)="pageEvent(true)">
+        Astek-Santé
+        <small class="text-muted">- Visualisation</small>
+        <br/>
+        <FONT size="2"> id : {{professionnelSanteService.getCurrentId()}}</FONT>
+        <FONT size="2">| Patient : {{professionnelSanteService.getCurrentPatient().getNom()}}</FONT>
+        <FONT size="2"> {{professionnelSanteService.getCurrentPatient().getPrenom()}}</FONT>
+    </h1>
+
+    <div class="btn-group-vertical" data-toggle="buttons">
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="nouveauSymptome()">Nouveau Symptome</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="parametrePatient()">Parametre Patient</button>
+    </div>
+
+</nav> 
+
+<br/>
+
+<div class="container">
+<div [ngSwitch]="page">
+    <p *ngSwitchCase="0">
+        <app-visualisation-tab-symptome></app-visualisation-tab-symptome>
+    </p>
+    <p *ngSwitchCase="1">
+        <app-visualisation-nouveau-symptome (pageEvent)="pageEvent($event)"></app-visualisation-nouveau-symptome>
+    </p>
+    <p *ngSwitchCase="2">
+        <app-visualisation-parametre-patient (pageEvent)="pageEvent($event)"></app-visualisation-parametre-patient>
+    </p>
+        <p *ngSwitchDefault>  
+    </p>
 </div>

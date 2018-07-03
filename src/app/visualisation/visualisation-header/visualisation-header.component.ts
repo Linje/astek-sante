@@ -25,6 +25,7 @@ export class VisualisationHeaderComponent implements OnInit {
   }
 
    pageEvent(aj : boolean){
+    this.progressService.start();
     this.page = 0;
   }
 

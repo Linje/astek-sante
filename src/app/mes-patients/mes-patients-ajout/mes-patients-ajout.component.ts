@@ -10,7 +10,7 @@ import { Patient } from '../../../model/patient';
 export class MesPatientsAjoutComponent implements OnInit {
  
   @Output() pageEvent = new EventEmitter<boolean>();
-  private alarm:number;
+  public alarm:number;
  
   constructor(private professionnelSanteService : ProfessionnelSanteService) { }
 

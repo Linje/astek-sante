@@ -11,9 +11,9 @@ export class VisualisationParametrePatientComponent implements OnInit {
 
   @Output() pageEvent = new EventEmitter<boolean>();
 
-  private alarm:number;
+  public alarm:number;
 
-  constructor(private professionnelSanteService: ProfessionnelSanteService) { }
+  constructor(public professionnelSanteService: ProfessionnelSanteService) { }
 
   ngOnInit() {
     if(this.professionnelSanteService.getCurrentPatient().getAlarmActivation()){

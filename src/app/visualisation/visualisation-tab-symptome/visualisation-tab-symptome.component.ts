@@ -17,11 +17,8 @@ export class VisualisationTabSymptomeComponent implements OnInit{
 
   ngOnInit() {
     if(this.professionnelSanteService.getCurrentPatient().getListSymptome().toString() == ""){
-      alert(1);
+      this.loadData();
     }
-    alert("list symptome : "+this.professionnelSanteService.getCurrentPatient().getListSymptome())
-    
-    this.loadData();
   }
 
   afficherSymptome(symptome : Symptome){

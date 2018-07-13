@@ -1,3 +1,8 @@
+/*
+Ce service permet de vérifier l'identité de l’utilisateur. L’identifiant (id) et le mot de passe (psw) envoyés sont comparés 
+avec ceux de la base de données. Le boolean renvoyé indique si les identifiants et mots de passes sont correct ou incorrect (true ou false).
+*/
+
 import { Injectable } from '@angular/core';
 import { urlWebApi } from '../constante/urlWebApi';
 import { Http, Headers, RequestOptions } from "@angular/http";

@@ -1,3 +1,10 @@
+/*
+Ce service donne accès aux méthodes permettant d’accéder et d’ajouter/supprimer les patients et les symptômes. Il représente le 
+lien entre l’application Web et l’API Web. Ses attributs indiquent qui est l’utilisateur actuel (currentId) et sur quel patient 
+l’utilisateur a décidé de s'intéresser (currentPatient). L’attribut listPatient permet d’éviter à l’application de devoir recharger la 
+liste des patients de la base de données à chaque fois qu’elle doit y accéder.
+*/
+
 import { Injectable } from '@angular/core';
 import { Patient } from '../model/patient';
 
@@ -18,7 +25,10 @@ export class ProfessionnelSanteService {
   constructor(private http: Http){}
 
 // Get
-
+/*
+Cette méthode envoie une requête GET à l’API web et récupère la liste de patients associée à 
+l’identifiant du professionnel de santé connecté (attribut “currentId”).
+*/
   public getListPatientWebApi(): Promise<Patient[]>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/"+ this.currentId)
@@ -39,6 +49,10 @@ export class ProfessionnelSanteService {
       });
   }
 
+/*
+Cette fonction envoie une requête GET à l’API web et récupère la liste de symptômes associée 
+au patient sélectionné (attribut “currentPatient”).
+*/
   public getListSymptomeWebApi() : Promise<Symptome[]>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/"+ this.currentId +"/"+ this.currentPatient.getNumberP())
@@ -59,6 +73,10 @@ export class ProfessionnelSanteService {
       });
   }
 
+/*
+Cette fonction envoie une requête GET à l’API web et récupère la liste de valeur associée au 
+symptôme sélectionné (numberS = nombre unique d’identification d’un symptôme).
+*/
   public getListValeurWebApi(numberS : number) : Promise<Valeur[]>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/"+ this.currentId +"/"+ this.currentPatient.getNumberP()+"/"+numberS)
@@ -81,6 +99,10 @@ export class ProfessionnelSanteService {
       });
   }
 
+/*
+Cette fonction utilise “getListSymptomeWebApi” et “getListValeurWebApi” pour obtenir puis enregistrer 
+dans le patient sélectionné (attribut “currentPatient”) sa liste de symptômes avec pour chaque symptôme leur liste de valeurs associée.
+*/
   public getSymptomeAndValeurWebApi() : Promise<void>{
     return new Promise((resolve)=>{
       this.getListSymptomeWebApi().then((s)=>{
@@ -110,6 +132,10 @@ export class ProfessionnelSanteService {
   });
   private options = new RequestOptions({ headers: this.headers });
 
+/*
+Cette fonction envoie une requête POST à l’API web pour ajouter un patient au professionnel de santé 
+connecté (attribut “currentId”).
+*/
   public addPatient(p : Patient) : Promise<void>{
     //envoie des données au webService
 
@@ -124,6 +150,10 @@ export class ProfessionnelSanteService {
     });
   }
 
+/*
+Cette fonction envoie une requête POST à l’API web pour ajouter un symptôme (Symptome s) au patient sélectionné 
+(attribut “currentPatient”).
+*/
   public addSymptome(s : Symptome) : Promise<void>{
     //envoie des données au webService
 
@@ -138,6 +168,9 @@ export class ProfessionnelSanteService {
     });
   }
 
+/*
+Cette fonction envoie une requête POST à l’API web pour ajouter une Valeur (Valeur v) au symptôme sélectionné (“numberS”).
+*/
   public addValeur(v : Valeur, numberS : number) : Promise<void>{
     return new Promise((resolve, reject) => {
       this.http.post(urlWebApi + "/valeur/" + numberS, JSON.stringify(v), this.options)
@@ -169,6 +202,10 @@ export class ProfessionnelSanteService {
 
 //DELETE
 
+/*
+Cette fonction envoie une requête DELETE à l’API web pour supprimer un patient (Patient p) au professionnel de santé 
+connecté (attribut “currentId”).
+*/
 public deletePatient(numberP : number) : Promise<void>{
   //envoie des données au webService
 
@@ -183,6 +220,9 @@ public deletePatient(numberP : number) : Promise<void>{
   });
 }
 
+/*
+Cette fonction envoie une requête DELETE à l’API web pour supprimer un symptôme (Symptome s) au patient connecté (attribut “currentPatient”).
+*/
 public deleteSymptome(numberS : number) : Promise<void>{
   //envoie des données au webService
 

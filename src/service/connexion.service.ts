@@ -6,20 +6,27 @@ import { ProfessionnelSanteService } from './professionnel-sante.service';
 @Injectable()
 export class ConnexionService {
 
-  constructor(private http: Http, private professionnelSanteService : ProfessionnelSanteService) { }
+  private log : boolean;
+
+  constructor(private http: Http, private professionnelSanteService : ProfessionnelSanteService) { 
+    this.log = false;
+  }
 
   
+
   public connect(id : string, psw : string): Promise<boolean>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/connection/"+ id + "/" + psw)
       .subscribe(data => {
-          let b : boolean;
+          //let b : boolean;
           if(data.text() === 'true'){
-             b=true;
+             //b=true;
+             this.log = true;
              this.professionnelSanteService.setCurrentId(id);
           }
-          else b=false;;
-          return resolve(b);
+          else this.log = false;//b=false;;
+          //return resolve(b);
+          return resolve(this.log);
          }, (err) => {
            alert(err);
              reject(err);

@@ -4,10 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { ProfessionnelSanteService } from '../service/professionnel-sante.service';
 
 import { Router } from '@angular/router';
+import { ConnexionService } from '../service/connexion.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private professionnelSanteService: ProfessionnelSanteService, private router: Router){}
+  constructor(private professionnelSanteService: ProfessionnelSanteService, 
+    private router: Router,
+    private connexionService : ConnexionService){}
 
   canActivate(
     next: ActivatedRouteSnapshot,

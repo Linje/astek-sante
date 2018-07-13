@@ -113,12 +113,8 @@ export class ProfessionnelSanteService {
   public addPatient(p : Patient) : Promise<void>{
     //envoie des données au webService
 
-    //test database :  
-    let url = "https://hello-word-app-astek.herokuapp.com/professional/";
-
-
     return new Promise((resolve, reject) => {
-      this.http.post(url + "/" + this.currentId,JSON.stringify(p), this.options)
+      this.http.post(urlWebApi + "/" + this.currentId,JSON.stringify(p), this.options)
         .subscribe(res => {
             return resolve(null);
        }, (err) => {

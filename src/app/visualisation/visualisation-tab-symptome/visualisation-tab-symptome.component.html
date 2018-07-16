@@ -4,7 +4,7 @@
     | 
   </div>
   <div *ngIf="this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 1">
-    <button type="button" class="btn btn-outline-warning" (click)="afficherTousLesSymptomes()">Tous les symptomes</button>
+    <button type="button" class="{{classbuttontous}}" (click)="afficherTousLesSymptomes()">Tous les symptomes</button>
   </div>
 </div>
 

@@ -13,6 +13,7 @@ export class VisualisationTabSymptomeComponent implements OnInit{
   private symptomeSelectionne : Symptome;
   public switch : number;
   private classbutton : string = "btn btn-outline-info";
+  private classbuttontous : string = "btn btn-outline-warning";
 
   constructor(public professionnelSanteService : ProfessionnelSanteService, private progressService : NgProgress) { }
 
@@ -21,13 +22,15 @@ export class VisualisationTabSymptomeComponent implements OnInit{
   }
 
   afficherSymptome(symptome : Symptome){
+    this.classbuttontous = "btn btn-outline-warning";
     this.progressService.start();
     this.symptomeSelectionne = symptome;
     if(this.switch !=1) this.switch = 1;
   }
 
   afficherTousLesSymptomes(){
-    this.classbutton = "btn btn-info";
+    //this.classbutton = "btn btn-info";
+    this.classbuttontous = "btn btn-warning";
     this.switch = 2;
   }
 

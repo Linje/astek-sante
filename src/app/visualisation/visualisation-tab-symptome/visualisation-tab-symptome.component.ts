@@ -27,6 +27,7 @@ export class VisualisationTabSymptomeComponent implements OnInit{
   }
 
   afficherTousLesSymptomes(){
+    this.classbutton = "btn btn-info";
     this.switch = 2;
   }
 

@@ -238,7 +238,9 @@ public deleteSymptome(numberS : number) : Promise<void>{
 }
 
 //UPDATE
-
+/*
+Cette fonction envoie une requête UPDATE à l’Api web pour modifier les informations d’un patient.
+*/
 public updatePatient(p : Patient) : Promise<void>{
   return new Promise((resolve, reject) => {
     this.http.put(urlWebApi + "/update/" + this.currentId, JSON.stringify(p), this.options)
@@ -251,6 +253,9 @@ public updatePatient(p : Patient) : Promise<void>{
   });
 }
 
+/*
+Cette fonction envoie une requête UPDATE à l’Api web pour modifier les informations d’un symptôme.
+*/
 public updateSymptome(s : Symptome) : Promise<void>{
   return new Promise((resolve, reject) => {
     this.http.put(urlWebApi + "/update/" + this.currentId + "/" + this.currentPatient.getNumberP(), JSON.stringify(s), this.options)

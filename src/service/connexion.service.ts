@@ -1,6 +1,5 @@
 /*
-Ce service permet de vérifier l'identité de l’utilisateur. L’identifiant (id) et le mot de passe (psw) envoyés sont comparés 
-avec ceux de la base de données. Le boolean renvoyé indique si les identifiants et mots de passes sont correct ou incorrect (true ou false).
+Ce service permet de vérifier l'identité de l’utilisateur à l’aide de la méthode “connect”.
 */
 
 import { Injectable } from '@angular/core';
@@ -17,8 +16,10 @@ export class ConnexionService {
     this.log = false;
   }
 
-  
-
+/*
+L’identifiant (id) et le mot de passe (psw) envoyés sont comparés avec ceux de la base de données. Le boolean renvoyé indique si les identifiants
+ et mots de passes sont correct ou incorrect (true ou false).
+*/
   public connect(id : string, psw : string): Promise<boolean>{
     return new Promise((resolve, reject) => {
       this.http.get(urlWebApi+"/connection/"+ id + "/" + psw)

@@ -12,6 +12,7 @@ import { NgProgress } from 'ngx-progressbar';
 export class VisualisationTabSymptomeComponent implements OnInit{
   private symptomeSelectionne : Symptome;
   public switch : number;
+  private classbutton : string = "btn btn-outline-info";
 
   constructor(public professionnelSanteService : ProfessionnelSanteService, private progressService : NgProgress) { }
 

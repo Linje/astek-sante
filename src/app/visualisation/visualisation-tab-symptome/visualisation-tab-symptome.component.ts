@@ -12,27 +12,32 @@ import { NgProgress } from 'ngx-progressbar';
 export class VisualisationTabSymptomeComponent implements OnInit{
   private symptomeSelectionne : Symptome;
   public switch : number;
-  private classbutton : string = "btn btn-outline-info";
+  private buttonColor : string[] = [];
   private classbuttontous : string = "btn btn-outline-warning";
 
   constructor(public professionnelSanteService : ProfessionnelSanteService, private progressService : NgProgress) { }
 
   ngOnInit() {
     this.loadData();
-    //this.classbutton[0]= "btn btn-outline-info";
-    //this.classbutton[1]= "btn btn-outline-info";
   }
 
-  afficherSymptome(symptome : Symptome){
-    //this.classbutton[0]= "btn btn-info";
-    this.classbuttontous = "btn btn-outline-warning";
+  afficherSymptome(symptome : Symptome, i : number){
     this.progressService.start();
     this.symptomeSelectionne = symptome;
     if(this.switch !=1) this.switch = 1;
+
+    this.classbuttontous = "btn btn-outline-warning";
+    for(let j = 0;j<this.professionnelSanteService.getCurrentPatient().getListSymptome().length; j++){
+      this.buttonColor[j] = "btn btn-outline-info";
+    }
+    this.buttonColor[i] = "btn btn-info";
+
   }
 
   afficherTousLesSymptomes(){
-    //this.classbutton = "btn btn-info";
+    for(let j = 0;j<this.buttonColor.length; j++){
+      this.buttonColor[j] = "btn btn-outline-info";
+    }
     this.classbuttontous = "btn btn-warning";
     this.switch = 2;
   }

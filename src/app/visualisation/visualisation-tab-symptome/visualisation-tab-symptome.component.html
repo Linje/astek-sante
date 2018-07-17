@@ -1,7 +1,7 @@
 <div class="row">
   <div *ngFor="let symptome of this.professionnelSanteService.getCurrentPatient().getListSymptome(); let i = index" [class.selected]="symptome === symptomeSelectionne">
-    <button type="button" class="{{classbutton}}" (click)="afficherSymptome(symptome)">{{symptome.getNom()}}</button>
-    |i
+    <button type="button" class="{{this.buttonColor[i]}}" (click)="afficherSymptome(symptome, i)">{{symptome.getNom()}}</button>
+    |
   </div>
   <div *ngIf="this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 1">
     <button type="button" class="{{classbuttontous}}" (click)="afficherTousLesSymptomes()">Tous les symptomes</button>

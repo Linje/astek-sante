@@ -55,7 +55,7 @@ export class VisualisationTabSymptomeComponent implements OnInit{
     this.professionnelSanteService.getSymptomeAndValeurWebApi().then(()=>{
       if(this.professionnelSanteService.getCurrentPatient().getListSymptome().length > 0){
         this.switch = 1;
-        this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0]);
+        this.afficherSymptome(this.professionnelSanteService.getCurrentPatient().getListSymptome()[0], 0);
       }
       else{
         this.switch = 3;

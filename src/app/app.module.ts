@@ -23,7 +23,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 //-------
 import { NgProgressModule } from 'ngx-progressbar';
 import { AuthGuard } from './auth.guard';
-
+import { AuthConnexionGuard } from './authConnexion.guard';
 
 @NgModule({
   declarations: [
@@ -41,8 +41,8 @@ import { AuthGuard } from './auth.guard';
     VisualisationModule,
     //Routes
     RouterModule.forRoot([
-      { path: 'accueil', component : AccueilComponent} ,
-      { path: 'connexion', component : ConnexionComponent } ,
+      { path: 'accueil',canActivate: [AuthConnexionGuard], component : AccueilComponent} ,
+      { path: 'connexion',canActivate: [AuthConnexionGuard], component : ConnexionComponent } ,
       { path: 'mesPatients', canActivate: [AuthGuard], component : MesPatientsHeaderComponent } ,
       { path: 'mesPatients/visualisation', canActivate: [AuthGuard], component : VisualisationHeaderComponent} ,
       { path: '',   redirectTo: '/accueil', pathMatch: 'full'} ,
@@ -54,7 +54,8 @@ import { AuthGuard } from './auth.guard';
   providers: [
     ProfessionnelSanteService,
     ConnexionService,
-    AuthGuard],
+    AuthGuard,
+    AuthConnexionGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

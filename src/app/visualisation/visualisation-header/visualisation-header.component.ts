@@ -4,6 +4,7 @@ import { ProfessionnelSanteService } from '../../../service/professionnel-sante.
 import { Router } from '@angular/router';
 
 import { NgProgress } from 'ngx-progressbar';
+import { ConnexionService } from '../../../service/connexion.service';
 
 @Component({
   selector: 'app-visualisation-header',
@@ -14,7 +15,9 @@ export class VisualisationHeaderComponent implements OnInit {
   
   public page : number;
 
-  constructor(public professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, 
+    private router: Router, private progressService : NgProgress,
+    private connexionService : ConnexionService) { }
 
   ngOnInit() {
     this.progressService.start();
@@ -47,6 +50,8 @@ export class VisualisationHeaderComponent implements OnInit {
         this.router.navigateByUrl('connexion');
         this.professionnelSanteService.setCurrentId("");
         this.professionnelSanteService.setCurrentPatient(null);
+
+        this.connexionService.deconnect();
       } 
     
   }

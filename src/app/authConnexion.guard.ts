@@ -7,23 +7,21 @@ import { Router } from '@angular/router';
 import { ConnexionService } from '../service/connexion.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthConnexionGuard implements CanActivate {
   constructor(private professionnelSanteService: ProfessionnelSanteService, 
     private router: Router, private connexionService : ConnexionService){}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      
-    let b : string;
 
-    this.connexionService.isLoggedIn().subscribe(val => b = val);
-    if(b!=null){
+    let b:string;
+    this.connexionService.isLoggedIn().subscribe(val=> b=val);
+    if(b==null){
       return true;
     }
     else{
-      alert("Connectez-vous pour accéder à cette page");
-      this.router.navigateByUrl("/connexion");
+      this.router.navigateByUrl("/mesPatients");
       return false;
     }
   }

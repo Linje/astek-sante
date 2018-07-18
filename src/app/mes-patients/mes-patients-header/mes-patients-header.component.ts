@@ -4,6 +4,7 @@ import { ProfessionnelSanteService } from '../../../service/professionnel-sante.
 import { Router } from '@angular/router';
 
 import { NgProgress } from 'ngx-progressbar';
+import { ConnexionService } from '../../../service/connexion.service';
 
 @Component({
   selector: 'app-mes-patients-header',
@@ -14,21 +15,51 @@ export class MesPatientsHeaderComponent implements OnInit {
 
   public page: number;
   
-  constructor(public professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
+  constructor(private professionnelSanteService : ProfessionnelSanteService, 
+    private router: Router, 
+    private progressService : NgProgress,
+    private connexionService : ConnexionService) { }
 
   ngOnInit() {
+    this.progressService.start();
+
     this.page = 0;
+
+    if(this.professionnelSanteService.getCurrentId()==null){
+      this.getFromLocalStorage().then(()=>{
+        this.loadData();
+      });
+    }
+    else{
+      this.loadData();
+    }
+  }
+
+  loadData(){
     this.professionnelSanteService.getListPatientWebApi().then(data =>
-    {
-        this.professionnelSanteService.setListPatient(data);
-        this.progressService.done();
+      {
+          this.professionnelSanteService.setListPatient(data);
+          this.progressService.done();
+      });
+  }
+
+//-----persistent connexion---------
+  getFromLocalStorage(): Promise<void>{
+    return new Promise((resolve, reject) => {
+      this.connexionService.isLoggedIn().subscribe(val =>{ 
+        this.professionnelSanteService.setCurrentId(val);
+        resolve(null);
+      });
     });
   }
+//-----------------------------------  
 
   deconnect(){
     if(confirm("Vous êtes sur de vouloir vous deconnecter ?")) {
       this.router.navigateByUrl("/connexion");
       this.professionnelSanteService.setCurrentId("");
+      
+      this.connexionService.deconnect();
     } 
   }
 

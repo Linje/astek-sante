@@ -15,7 +15,7 @@ export class MesPatientsHeaderComponent implements OnInit {
 
   public page: number;
   
-  constructor(private professionnelSanteService : ProfessionnelSanteService, 
+  constructor(public professionnelSanteService : ProfessionnelSanteService, 
     private router: Router, 
     private progressService : NgProgress,
     private connexionService : ConnexionService) { }

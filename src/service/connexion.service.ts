@@ -24,6 +24,7 @@ export class ConnexionService {
             this.professionnelSanteService.setCurrentId(id);
             
             //-----------------
+            alert("connect");
             this.login(id);
             //-----------------
 

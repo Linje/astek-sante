@@ -21,7 +21,6 @@ export class ConnexionComponent implements OnInit {
   ngOnInit() {}
 
   connexion(id : string, psw : string){
-    alert("connexion");
     this.progressService.start()
     this.connexionService.connect(id,psw)
     .then(res => {

@@ -24,7 +24,6 @@ export class ConnexionService {
             this.professionnelSanteService.setCurrentId(id);
             
             //-----------------
-            alert("connect");
             this.login(id);
             //-----------------
 
@@ -47,7 +46,6 @@ export class ConnexionService {
     return this.isLoginId.asObservable();
   }
   public login(id : string) : void {
-    alert(id);
     localStorage.setItem('id', id);
     this.isLoginId.next(id); 
   }

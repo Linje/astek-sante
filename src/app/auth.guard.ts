@@ -16,13 +16,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     let b : string;
-    this.connexionService.isLoggedIn().subscribe(val => alert(val));
+    this.connexionService.isLoggedIn().subscribe(val => b=val);
     
     if(b!=null){
       return true;
     }
     else{
-      alert("Connectez-vous pour accéder à cette page ??");
+      alert("Connectez-vous pour accéder à cette page");
       this.router.navigateByUrl("/connexion");
       return false;
     }

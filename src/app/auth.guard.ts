@@ -14,10 +14,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      
-    let b : string;
 
-    this.connexionService.isLoggedIn().subscribe(val => b = val);
+    let b : string;
+    this.connexionService.isLoggedIn().subscribe(val => alert(val));
+    
     if(b!=null){
       return true;
     }

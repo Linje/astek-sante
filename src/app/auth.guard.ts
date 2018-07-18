@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     else{
-      alert("Connectez-vous pour accéder à cette page");
+      alert("Connectez-vous pour accéder à cette page ??");
       this.router.navigateByUrl("/connexion");
       return false;
     }

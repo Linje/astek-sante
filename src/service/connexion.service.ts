@@ -25,6 +25,8 @@ export class ConnexionService {
             
             //-----------------
             this.login(id);
+            this.professionnelSanteService.getListNomSymptomeWebApi()
+            .then(res => this.professionnelSanteService.setListNomSymptome(res));
             //-----------------
 
           }

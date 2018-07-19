@@ -6,14 +6,16 @@ liste des patients de la base de données à chaque fois qu’elle doit y accéd
 */
 
 import { Injectable } from '@angular/core';
-import { Patient } from '../model/patient';
 
+import { Patient } from '../model/patient';
 import { Symptome } from '../model/symptome';
+import { Valeur } from '../model/valeur';
+import { Valeur2 } from '../model/valeur2';
+
 import { urlWebApi } from '../constante/urlWebApi';
 
 import { Http, Headers, RequestOptions } from "@angular/http";
-import { Valeur } from '../model/valeur';
-import { Valeur2 } from '../model/valeur2';
+
 
 @Injectable()
 export class ProfessionnelSanteService {
@@ -22,9 +24,33 @@ export class ProfessionnelSanteService {
   private listPatient: Patient[];
   private currentPatient : Patient;
 
+  private listNomSymptome : string[];
+
   constructor(private http: Http){}
 
 // Get
+/*
+Cette méthode envoie une requête GET à l’API web et récupère la liste des noms des symptomes disponibles
+*/
+public getListNomSymptomeWebApi(): Promise<string[]>{
+  return new Promise((resolve, reject) => {
+    this.http.get(urlWebApi+"/listNomSymptome")
+    .subscribe(data => {
+        let list: string[] = [];
+        let res = data.json();
+        let i = 0;
+        while(res[i] != undefined){
+          list.push(res[i]["nom"]);
+          i = i + 1;
+        }
+        return resolve(list);
+       }, (err) => {
+         alert(err);
+           reject(err);
+       });
+    });
+}
+
 /*
 Cette méthode envoie une requête GET à l’API web et récupère la liste de patients associée à 
 l’identifiant du professionnel de santé connecté (attribut “currentId”).
@@ -293,5 +319,14 @@ public updateSymptome(s : Symptome) : Promise<void>{
   public getCurrentPatient() : Patient{
     return this.currentPatient;
   }
+
+  public setListNomSymptome(listNomSymptome : string[]) : void{
+    this.listNomSymptome = listNomSymptome;
+  }
+  
+  public getListNomSymptome() : string[]{
+    return this.listNomSymptome;
+  }
+
 
 }

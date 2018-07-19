@@ -25,6 +25,12 @@ export class VisualisationHeaderComponent implements OnInit {
       this.router.navigateByUrl('/mesPatients');
     }
     this.page = 0;
+
+    this.professionnelSanteService.getListNomSymptomeWebApi()
+    .then(res =>{
+      this.professionnelSanteService.setListNomSymptome(res);
+      alert(res);
+    });
   }
 
    pageEvent(aj : boolean){

@@ -321,7 +321,6 @@ public updateSymptome(s : Symptome) : Promise<void>{
   }
 
   public setListNomSymptome(listNomSymptome : string[]) : void{
-    alert(1);
     this.listNomSymptome = listNomSymptome;
   }
   

@@ -21,6 +21,14 @@ export class MesPatientsHeaderComponent implements OnInit {
     private connexionService : ConnexionService) { }
 
   ngOnInit() {
+    if(this.professionnelSanteService.getListNomSymptome() == null){
+      this.professionnelSanteService.getListNomSymptomeWebApi()
+      .then(res =>{
+        this.professionnelSanteService.setListNomSymptome(res);
+        alert(res);
+      });
+    }
+
     this.progressService.start();
 
     this.page = 0;

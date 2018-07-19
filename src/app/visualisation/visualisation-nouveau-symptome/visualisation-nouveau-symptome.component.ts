@@ -13,7 +13,9 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
   
   constructor(private professionnelSanteService: ProfessionnelSanteService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    alert(this.professionnelSanteService.getListNomSymptome().toString());
+  }
 
   ajouterUnSymptome(nom : string, description : string, echelle1 : number, echelle2 : number){
     let s : Symptome = new Symptome(9,nom,description,[echelle1,echelle2],null);

@@ -41,6 +41,7 @@ public getListNomSymptomeWebApi(): Promise<string[]>{
         let i = 0;
         while(res[i] != undefined){
           list.push(res[i]["nom"]);
+          alert(res[i]["nom"])
           i = i + 1;
         }
         return resolve(list);

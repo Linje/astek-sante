@@ -11,7 +11,7 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
 
   @Output() pageEvent = new EventEmitter<boolean>();
   
-  constructor(private professionnelSanteService: ProfessionnelSanteService) { }
+  constructor(public professionnelSanteService: ProfessionnelSanteService) { }
 
   ngOnInit() {
     alert(this.professionnelSanteService.getListNomSymptome());

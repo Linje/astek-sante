@@ -20,7 +20,8 @@ export class VisualisationSymptomeComponent implements OnInit, OnChanges, AfterV
   private switch : number;
   private typeChart : string;
 
-  constructor(private professionnelSanteService : ProfessionnelSanteService, private router: Router, private progressService : NgProgress) { }
+  constructor(public professionnelSanteService : ProfessionnelSanteService, 
+    private router: Router, private progressService : NgProgress) {}
 
   ngOnInit() {
     this.switch = 1;

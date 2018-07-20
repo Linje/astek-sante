@@ -21,9 +21,6 @@ export class VisualisationHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.progressService.start();
-    if(this.professionnelSanteService.getCurrentPatient()==null){
-      this.router.navigateByUrl('/mesPatients');
-    }
     this.page = 0;
   }
 

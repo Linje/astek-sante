@@ -25,7 +25,6 @@ export class MesPatientsHeaderComponent implements OnInit {
       this.professionnelSanteService.getListNomSymptomeWebApi()
       .then(res =>{
         this.professionnelSanteService.setListNomSymptome(res);
-        alert(res);
       });
     }
 

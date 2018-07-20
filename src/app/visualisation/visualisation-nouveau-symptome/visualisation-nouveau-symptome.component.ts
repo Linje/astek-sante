@@ -13,10 +13,13 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
   
   constructor(private professionnelSanteService: ProfessionnelSanteService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    alert(this.professionnelSanteService.getListNomSymptome());
+  }
 
   ajouterUnSymptome(nom : string, description : string, echelle1 : number, echelle2 : number){
-    let s : Symptome = new Symptome(9,nom,description,[echelle1,echelle2],null);
+    // peut importe la valeur du numberS, elle va être remplacer dans la base de donnée (auto-incrément)
+    let s : Symptome = new Symptome(1,nom,description,[echelle1,echelle2],null);
     this.professionnelSanteService.addSymptome(s).then(() => {
       this.professionnelSanteService.getListSymptomeWebApi().then(data => {
         this.professionnelSanteService.getCurrentPatient().setListSymptome(data);

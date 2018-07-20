@@ -12,6 +12,15 @@
     <input class="form-control" placeholder="tapez le nom du symptome ici" id="nom" type="text" #nom>
 </div>
 
+<div class="form-group">
+    <label for="exampleSelect1">Nom</label>
+    <select class="form-control" id="nomSymptome">
+        <div *ngFor="let nomS of this.professionnelSanteService.getListNomSymptome();">
+            <option>{{nomS}}</option>
+        </div>
+    </select>
+</div>
+
 <br/>
 
 <div class="form-group">

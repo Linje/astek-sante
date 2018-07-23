@@ -13,9 +13,7 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
   
   constructor(public professionnelSanteService: ProfessionnelSanteService) { }
 
-  ngOnInit() {
-    alert(this.professionnelSanteService.getListNomSymptome());
-  }
+  ngOnInit() {}
 
   ajouterUnSymptome(nom : string, description : string, echelle1 : number, echelle2 : number){
     // peut importe la valeur du numberS, elle va être remplacer dans la base de donnée (auto-incrément)
@@ -26,6 +24,7 @@ export class VisualisationNouveauSymptomeComponent implements OnInit {
       });
       this.pageEvent.emit(false);
     });
+    
   }
 
   annuler(){

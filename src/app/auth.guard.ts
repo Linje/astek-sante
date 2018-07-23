@@ -19,11 +19,6 @@ export class AuthGuard implements CanActivate {
     this.connexionService.isLoggedIn().subscribe(val => b=val);
     
     if(b!=null){
-      /*if(this.professionnelSanteService.getCurrentPatient()==null){
-        this.router.navigateByUrl('/mesPatients');
-      }
-      */
-      
       return true;
     }
     else{

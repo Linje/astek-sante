@@ -37,7 +37,7 @@ export class ConnexionComponent implements OnInit {
 
   accueil(){
     //----------
-    //this.professionnelSanteService.addValeur2();
+    this.professionnelSanteService.addValeur2();
     //----------
     this.router.navigateByUrl('/accueil');
   }

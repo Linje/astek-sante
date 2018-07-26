@@ -20,8 +20,8 @@ export class VisualisationParametreSymptomeComponent implements OnInit {
     this.pageEvent.emit(false);
   }
 
-  modifierUnSymptome(nom : string, description : string, echelle1 : number, echelle2 : number){
-    if(nom == "") nom = this.symptome.getNom();
+  modifierUnSymptome(description : string, echelle1 : number, echelle2 : number){
+    //if(nom == "") nom = this.symptome.getNom();
     if(description == "") description = this.symptome.getDescription();
 
     let echelleString1 = "" + echelle1;
@@ -30,7 +30,7 @@ export class VisualisationParametreSymptomeComponent implements OnInit {
     if(echelleString2 == "") echelle2 = this.symptome.getEchelle()[1];
 
     this.professionnelSanteService.updateSymptome(new Symptome(this.symptome.getNumberS(),
-    nom, description,[echelle1,echelle2],null)).then(()=>{
+    this.symptome.getNom(), description,[echelle1,echelle2],null)).then(()=>{
       this.pageEvent.emit(true); 
       alert("Symptome modifié");     
     });  
